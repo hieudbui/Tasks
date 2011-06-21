@@ -10,11 +10,13 @@
 
 @class DetailViewController;
 
-@interface RootViewController : UITableViewController {
+@interface RootViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
 
 }
 
 		
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+@property (nonatomic, retain) NSMutableArray *taskGroups;
+@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 
 @end

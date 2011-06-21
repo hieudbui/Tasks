@@ -7,21 +7,48 @@
 //
 
 #import "RootViewController.h"
-
 #import "DetailViewController.h"
+#import "Account.h"
 
 @implementation RootViewController
 		
 @synthesize detailViewController;
+@synthesize taskGroups;
+@synthesize bottomToolbar=_bottomToolbar;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+    self.taskGroups=[NSMutableArray arrayWithObjects: @"Cat", @"Dog", @"Fish",nil];
+    
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] 
+                                   initWithTitle:@"Edit" 
+                                   style: UIBarButtonItemStyleBordered 
+                                   target:self 
+                                   action:@selector(editButtonTapped)];
+    self.navigationItem.rightBarButtonItem=editButton;
+    Account *account=[[Account alloc] init];
+    account.userName=@"userName";
+    account.password=@"password";
+    account.type=Local;
+    
+    NSLog(@"account: %@", account);
+    [account release];
+    [editButton release];
+    self.title=@"RootView";
+    
 }
 
-		
+- (void) editButtonTapped
+{
+    NSLog(@"edit button tapped.  Switch to edit mode");
+    //GenericViewController *genericViewController=[[GenericViewController alloc] init];
+    //[self.navigationController pushViewController:genericViewController animated:true];
+    //[genericViewController release];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -48,14 +75,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 10;
     		
 }
 
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.taskGroups count];
     		
 }
 
@@ -69,8 +96,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    // Configure the cell.
-    		
+    cell.textLabel.text = [self.taskGroups objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -116,6 +142,10 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    [indexPath row];
+    NSLog(@"indexPath.row = %u", [indexPath row]);
+    NSLog(@"%@", [self.taskGroups objectAtIndex:indexPath.row]);
+    detailViewController.detailItem=[taskGroups objectAtIndex:indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,6 +165,8 @@
 - (void)dealloc
 {
     [detailViewController release];
+    [taskGroups release];
+    [_bottomToolbar release];
     [super dealloc];
 }
 
