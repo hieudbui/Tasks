@@ -23,6 +23,12 @@
 		730C58D313AFB85E00D443E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 730C58D113AFB85E00D443E6 /* InfoPlist.strings */; };
 		730C58D613AFB85E00D443E6 /* TasksTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 730C58D513AFB85E00D443E6 /* TasksTests.h */; };
 		730C58D813AFB85E00D443E6 /* TasksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58D713AFB85E00D443E6 /* TasksTests.m */; };
+		730C593C13B10EFC00D443E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C593B13B10EFB00D443E6 /* RootView.xib */; };
+		730C593F13B1157B00D443E6 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C593E13B1157A00D443E6 /* Account.m */; };
+		73645EF713B11C2700222CB1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EF613B11C2700222CB1 /* TaskList.m */; };
+		73645EFB13B11C3300222CB1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EFA13B11C3300222CB1 /* Task.m */; };
+		73645F0213B11E1B00222CB1 /* NoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0113B11E1B00222CB1 /* NoteStorage.m */; };
+		73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,24 +46,36 @@
 		730C58A513AFB85E00D443E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		730C58A713AFB85E00D443E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		730C58A913AFB85E00D443E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		730C58AD13AFB85E00D443E6 /* Tasks-Info.plist */ = {isa = PBXFileReference; path = "Tasks-Info.plist"; sourceTree = "<group>"; };
+		730C58AD13AFB85E00D443E6 /* Tasks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tasks-Info.plist"; sourceTree = "<group>"; };
 		730C58AF13AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		730C58B113AFB85E00D443E6 /* Tasks-Prefix.pch */ = {isa = PBXFileReference; path = "Tasks-Prefix.pch"; sourceTree = "<group>"; };
+		730C58B113AFB85E00D443E6 /* Tasks-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tasks-Prefix.pch"; sourceTree = "<group>"; };
 		730C58B213AFB85E00D443E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */ = {isa = PBXFileReference; path = TasksAppDelegate.h; sourceTree = "<group>"; };
+		730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TasksAppDelegate.h; sourceTree = "<group>"; };
 		730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TasksAppDelegate.m; sourceTree = "<group>"; };
 		730C58B813AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		730C58BA13AFB85E00D443E6 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		730C58BA13AFB85E00D443E6 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		730C58BB13AFB85E00D443E6 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		730C58BE13AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
-		730C58C013AFB85E00D443E6 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		730C58C013AFB85E00D443E6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		730C58C113AFB85E00D443E6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		730C58C813AFB85E00D443E6 /* TasksTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TasksTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		730C58D013AFB85E00D443E6 /* TasksTests-Info.plist */ = {isa = PBXFileReference; path = "TasksTests-Info.plist"; sourceTree = "<group>"; };
+		730C58D013AFB85E00D443E6 /* TasksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TasksTests-Info.plist"; sourceTree = "<group>"; };
 		730C58D213AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		730C58D413AFB85E00D443E6 /* TasksTests-Prefix.pch */ = {isa = PBXFileReference; path = "TasksTests-Prefix.pch"; sourceTree = "<group>"; };
+		730C58D413AFB85E00D443E6 /* TasksTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TasksTests-Prefix.pch"; sourceTree = "<group>"; };
 		730C58D513AFB85E00D443E6 /* TasksTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TasksTests.h; sourceTree = "<group>"; };
 		730C58D713AFB85E00D443E6 /* TasksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TasksTests.m; sourceTree = "<group>"; };
+		730C593B13B10EFB00D443E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		730C593D13B1157A00D443E6 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		730C593E13B1157A00D443E6 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		73645EF513B11C2700222CB1 /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
+		73645EF613B11C2700222CB1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
+		73645EF913B11C3300222CB1 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		73645EFA13B11C3300222CB1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		73645F0013B11E1B00222CB1 /* NoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteStorage.h; sourceTree = "<group>"; };
+		73645F0113B11E1B00222CB1 /* NoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteStorage.m; sourceTree = "<group>"; };
+		73645F0313B11F7E00222CB1 /* AccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStorage.h; sourceTree = "<group>"; };
+		73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryAccountStorage.h; sourceTree = "<group>"; };
+		73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryAccountStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +134,12 @@
 		730C58AB13AFB85E00D443E6 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				73645F0713B1241000222CB1 /* Controller */,
+				73645EFC13B11DF000222CB1 /* Storage */,
+				730C594313B11A0E00D443E6 /* Domain */,
 				730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */,
 				730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */,
 				730C58B713AFB85E00D443E6 /* MainWindow.xib */,
-				730C58BA13AFB85E00D443E6 /* DetailViewController.h */,
-				730C58BB13AFB85E00D443E6 /* DetailViewController.m */,
-				730C58BD13AFB85E00D443E6 /* DetailView.xib */,
-				730C58C013AFB85E00D443E6 /* RootViewController.h */,
-				730C58C113AFB85E00D443E6 /* RootViewController.m */,
 				730C58AC13AFB85E00D443E6 /* Supporting Files */,
 			);
 			path = Tasks;
@@ -158,6 +174,44 @@
 				730C58D413AFB85E00D443E6 /* TasksTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		730C594313B11A0E00D443E6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				730C593E13B1157A00D443E6 /* Account.m */,
+				730C593D13B1157A00D443E6 /* Account.h */,
+				73645EF513B11C2700222CB1 /* TaskList.h */,
+				73645EF613B11C2700222CB1 /* TaskList.m */,
+				73645EF913B11C3300222CB1 /* Task.h */,
+				73645EFA13B11C3300222CB1 /* Task.m */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		73645EFC13B11DF000222CB1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				73645F0313B11F7E00222CB1 /* AccountStorage.h */,
+				73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */,
+				73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */,
+				73645F0013B11E1B00222CB1 /* NoteStorage.h */,
+				73645F0113B11E1B00222CB1 /* NoteStorage.m */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
+		73645F0713B1241000222CB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				730C593B13B10EFB00D443E6 /* RootView.xib */,
+				730C58BA13AFB85E00D443E6 /* DetailViewController.h */,
+				730C58BB13AFB85E00D443E6 /* DetailViewController.m */,
+				730C58BD13AFB85E00D443E6 /* DetailView.xib */,
+				730C58C013AFB85E00D443E6 /* RootViewController.h */,
+				730C58C113AFB85E00D443E6 /* RootViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +284,7 @@
 				730C58B013AFB85E00D443E6 /* InfoPlist.strings in Resources */,
 				730C58B913AFB85E00D443E6 /* MainWindow.xib in Resources */,
 				730C58BF13AFB85E00D443E6 /* DetailView.xib in Resources */,
+				730C593C13B10EFC00D443E6 /* RootView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +324,11 @@
 				730C58B613AFB85E00D443E6 /* TasksAppDelegate.m in Sources */,
 				730C58BC13AFB85E00D443E6 /* DetailViewController.m in Sources */,
 				730C58C213AFB85E00D443E6 /* RootViewController.m in Sources */,
+				730C593F13B1157B00D443E6 /* Account.m in Sources */,
+				73645EF713B11C2700222CB1 /* TaskList.m in Sources */,
+				73645EFB13B11C3300222CB1 /* Task.m in Sources */,
+				73645F0213B11E1B00222CB1 /* NoteStorage.m in Sources */,
+				73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +513,7 @@
 				730C58DD13AFB85E00D443E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		730C58DE13AFB85E00D443E6 /* Build configuration list for PBXNativeTarget "TasksTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +522,7 @@
 				730C58E013AFB85E00D443E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
