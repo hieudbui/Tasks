@@ -27,7 +27,6 @@
 		730C593F13B1157B00D443E6 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C593E13B1157A00D443E6 /* Account.m */; };
 		73645EF713B11C2700222CB1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EF613B11C2700222CB1 /* TaskList.m */; };
 		73645EFB13B11C3300222CB1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EFA13B11C3300222CB1 /* Task.m */; };
-		73645F0213B11E1B00222CB1 /* NoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0113B11E1B00222CB1 /* NoteStorage.m */; };
 		73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +70,7 @@
 		73645EF613B11C2700222CB1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
 		73645EF913B11C3300222CB1 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		73645EFA13B11C3300222CB1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		73645F0013B11E1B00222CB1 /* NoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteStorage.h; sourceTree = "<group>"; };
-		73645F0113B11E1B00222CB1 /* NoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteStorage.m; sourceTree = "<group>"; };
+		73645F0013B11E1B00222CB1 /* TaskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStorage.h; sourceTree = "<group>"; };
 		73645F0313B11F7E00222CB1 /* AccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStorage.h; sourceTree = "<group>"; };
 		73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryAccountStorage.h; sourceTree = "<group>"; };
 		73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryAccountStorage.m; sourceTree = "<group>"; };
@@ -195,8 +193,7 @@
 				73645F0313B11F7E00222CB1 /* AccountStorage.h */,
 				73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */,
 				73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */,
-				73645F0013B11E1B00222CB1 /* NoteStorage.h */,
-				73645F0113B11E1B00222CB1 /* NoteStorage.m */,
+				73645F0013B11E1B00222CB1 /* TaskStorage.h */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -327,7 +324,6 @@
 				730C593F13B1157B00D443E6 /* Account.m in Sources */,
 				73645EF713B11C2700222CB1 /* TaskList.m in Sources */,
 				73645EFB13B11C3300222CB1 /* Task.m in Sources */,
-				73645F0213B11E1B00222CB1 /* NoteStorage.m in Sources */,
 				73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
