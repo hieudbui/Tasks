@@ -10,10 +10,11 @@
 
 @class Account;
 @class Task;
+@class TaskList;
 
 @protocol TaskStorage <NSObject> 
-- (NSArray *)getTasks:(Account *)account;
-- (NSArray *)getTasks:(TaslList *)taskList:
-- (NSArray *)getTaskList:(Account *)account;
+- (NSArray *)getAllTasksForAccount:(Account *)account;
+- (NSArray *)getTasksForTaskList:(TaskList *)taskList;
+- (NSArray *)getAllTaskListsForAccount:(Account *)account;
 - (void) saveTask:(Task *)task;
 @end

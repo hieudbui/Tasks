@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class TasksViewController;
+@protocol AccountStorage;
 
 @interface RootViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
-
 }
 
-		
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
-@property (nonatomic, retain) NSMutableArray *taskGroups;
-@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic, retain) IBOutlet TasksViewController *tasksViewController;
 
+@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic, retain) IBOutlet id<AccountStorage> accountStorage;
+@property (nonatomic, retain) NSArray *accounts;
 @end

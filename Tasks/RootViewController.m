@@ -8,20 +8,30 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
+#import "TasksViewController.h"
 #import "Account.h"
 
 @implementation RootViewController
 		
 @synthesize detailViewController;
-@synthesize taskGroups;
 @synthesize bottomToolbar=_bottomToolbar;
+@synthesize accountStorage=_accountStorage;
+@synthesize accounts=_accounts;
+@synthesize tasksViewController;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
-    self.taskGroups=[NSMutableArray arrayWithObjects: @"Cat", @"Dog", @"Fish",nil];
+    
+    Account *allAccount=Account.allAccount;
+    
+    self.accounts=[NSMutableArray arrayWithObjects: 
+               [NSMutableArray arrayWithObjects:allAccount, nil], 
+               [self.accountStorage getAccounts],
+               nil];
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] 
                                    initWithTitle:@"Edit" 
@@ -29,15 +39,8 @@
                                    target:self 
                                    action:@selector(editButtonTapped)];
     self.navigationItem.rightBarButtonItem=editButton;
-    Account *account=[[Account alloc] init];
-    account.userName=@"userName";
-    account.password=@"password";
-    account.type=Local;
-    
-    NSLog(@"account: %@", account);
-    [account release];
     [editButton release];
-    self.title=@"RootView";
+    self.title=@"Accounts";
     
 }
 
@@ -75,17 +78,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
-    		
+    return [self.accounts count];
 }
 
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.taskGroups count];
-    		
+    return [[self.accounts objectAtIndex:section] count];
 }
-
 		
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,7 +96,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    cell.textLabel.text = [self.taskGroups objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
     return cell;
 }
 
@@ -142,10 +142,15 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    [indexPath row];
-    NSLog(@"indexPath.row = %u", [indexPath row]);
-    NSLog(@"%@", [self.taskGroups objectAtIndex:indexPath.row]);
-    detailViewController.detailItem=[taskGroups objectAtIndex:indexPath.row];
+    //detailViewController.detailItem=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    //TODO
+    //additional work to check if it is all index then pass all the accounts
+    
+    Account *selectedAccount=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    self.tasksViewController.accounts=
+    selectedAccount.type==All?[self.accounts objectAtIndex:indexPath.section+1]:[NSArray arrayWithObjects:[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row],nil];
+    NSLog(@"selected accounts: %@", self.tasksViewController.accounts);
+    [self.navigationController pushViewController:self.tasksViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -165,8 +170,10 @@
 - (void)dealloc
 {
     [detailViewController release];
-    [taskGroups release];
+    [tasksViewController release];
     [_bottomToolbar release];
+    [_accountStorage release];
+    [_accounts release];
     [super dealloc];
 }
 

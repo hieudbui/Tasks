@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TaskList;
 
 @interface Task : NSObject {
     
@@ -16,4 +17,5 @@
 @property(nonatomic,retain) NSString *name;
 @property(nonatomic,retain) NSString *note;
 @property(nonatomic,retain) NSDate *dueDate;
+@property(nonatomic,retain) TaskList *taskList;
 @end

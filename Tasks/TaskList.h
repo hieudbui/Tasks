@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class Account;
+@class Task;
 
 @interface TaskList : NSObject {
-    
 }
 
+-(void) addTask:(Task *)task;
 @property(nonatomic,retain) NSString *name;
+@property(nonatomic,retain) Account *account;
+@property(nonatomic,retain) NSArray *tasks;
 
 @end

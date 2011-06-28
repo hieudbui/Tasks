@@ -11,7 +11,8 @@
 
 typedef enum {
     Local=0,
-    Google=1
+    Google=1,
+    All=3
 } AccountType;
 
 @interface Account : NSObject {
@@ -20,9 +21,13 @@ typedef enum {
 
 +(Account *) localAccount;
 +(Account *) googleAccount;
++(Account *) allAccount;
+
 @property AccountType type;
 @property(nonatomic,retain) NSString *userName;
 @property(nonatomic,retain) NSString *password;
+@property(nonatomic,retain) NSString *name;
+@property(nonatomic,retain) NSArray *taskLists;
 
 
 @end

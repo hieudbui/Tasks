@@ -32,7 +32,6 @@
 
 - (NSArray *)getAccounts
 {
-    NSLog(@"getAccounts called");
     return _accounts;
 }
 
@@ -43,7 +42,7 @@
     _accounts=accounts;
 }
 
-- (void)saveAccounts:(Account *)account 
+- (void)saveAccount:(Account *)account 
 {
     
 }
