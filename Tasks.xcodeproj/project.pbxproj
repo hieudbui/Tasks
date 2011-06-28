@@ -22,12 +22,15 @@
 		730C58CB13AFB85E00D443E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730C58A913AFB85E00D443E6 /* CoreGraphics.framework */; };
 		730C58D313AFB85E00D443E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 730C58D113AFB85E00D443E6 /* InfoPlist.strings */; };
 		730C58D613AFB85E00D443E6 /* TasksTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 730C58D513AFB85E00D443E6 /* TasksTests.h */; };
-		730C58D813AFB85E00D443E6 /* TasksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58D713AFB85E00D443E6 /* TasksTests.m */; };
 		730C593C13B10EFC00D443E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C593B13B10EFB00D443E6 /* RootView.xib */; };
 		730C593F13B1157B00D443E6 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C593E13B1157A00D443E6 /* Account.m */; };
 		73645EF713B11C2700222CB1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EF613B11C2700222CB1 /* TaskList.m */; };
 		73645EFB13B11C3300222CB1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EFA13B11C3300222CB1 /* Task.m */; };
 		73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */; };
+		73645F1213B2306600222CB1 /* InMemoryTaskStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */; };
+		73645F1913B2374F00222CB1 /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F1813B2374E00222CB1 /* TaskTests.m */; };
+		73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7FDB713B8F5A10001E053 /* TasksViewController.m */; };
+		73B7FDBF13B8FA5B0001E053 /* TasksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B7FDBE13B8FA5B0001E053 /* TasksView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,13 @@
 		73645F0313B11F7E00222CB1 /* AccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStorage.h; sourceTree = "<group>"; };
 		73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryAccountStorage.h; sourceTree = "<group>"; };
 		73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryAccountStorage.m; sourceTree = "<group>"; };
+		73645F1013B2306600222CB1 /* InMemoryTaskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryTaskStorage.h; sourceTree = "<group>"; };
+		73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryTaskStorage.m; sourceTree = "<group>"; };
+		73645F1713B2374E00222CB1 /* TaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTests.h; sourceTree = "<group>"; };
+		73645F1813B2374E00222CB1 /* TaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTests.m; sourceTree = "<group>"; };
+		73B7FDB613B8F5A10001E053 /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
+		73B7FDB713B8F5A10001E053 /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
+		73B7FDBE13B8FA5B0001E053 /* TasksView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TasksView.xib; path = Tasks.xcodeproj/TasksView.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +170,8 @@
 				730C58D513AFB85E00D443E6 /* TasksTests.h */,
 				730C58D713AFB85E00D443E6 /* TasksTests.m */,
 				730C58CF13AFB85E00D443E6 /* Supporting Files */,
+				73645F1713B2374E00222CB1 /* TaskTests.h */,
+				73645F1813B2374E00222CB1 /* TaskTests.m */,
 			);
 			path = TasksTests;
 			sourceTree = "<group>";
@@ -194,6 +206,8 @@
 				73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */,
 				73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */,
 				73645F0013B11E1B00222CB1 /* TaskStorage.h */,
+				73645F1013B2306600222CB1 /* InMemoryTaskStorage.h */,
+				73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -207,6 +221,9 @@
 				730C58BD13AFB85E00D443E6 /* DetailView.xib */,
 				730C58C013AFB85E00D443E6 /* RootViewController.h */,
 				730C58C113AFB85E00D443E6 /* RootViewController.m */,
+				73B7FDB613B8F5A10001E053 /* TasksViewController.h */,
+				73B7FDB713B8F5A10001E053 /* TasksViewController.m */,
+				73B7FDBE13B8FA5B0001E053 /* TasksView.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -282,6 +299,7 @@
 				730C58B913AFB85E00D443E6 /* MainWindow.xib in Resources */,
 				730C58BF13AFB85E00D443E6 /* DetailView.xib in Resources */,
 				730C593C13B10EFC00D443E6 /* RootView.xib in Resources */,
+				73B7FDBF13B8FA5B0001E053 /* TasksView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +343,8 @@
 				73645EF713B11C2700222CB1 /* TaskList.m in Sources */,
 				73645EFB13B11C3300222CB1 /* Task.m in Sources */,
 				73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */,
+				73645F1213B2306600222CB1 /* InMemoryTaskStorage.m in Sources */,
+				73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				730C58D813AFB85E00D443E6 /* TasksTests.m in Sources */,
+				73645F1913B2374F00222CB1 /* TaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
