@@ -20,5 +20,6 @@
 
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) IBOutlet id<AccountStorage> accountStorage;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *accounts;
 @end

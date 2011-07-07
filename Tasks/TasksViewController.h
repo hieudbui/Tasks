@@ -20,5 +20,6 @@
 @property (nonatomic, retain) NSArray *accounts;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet id<TaskStorage> taskStorage;
+@property (nonatomic, retain) NSArray *accountsToTaskLists;
 @end
 

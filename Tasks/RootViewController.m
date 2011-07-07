@@ -18,6 +18,7 @@
 @synthesize accountStorage=_accountStorage;
 @synthesize accounts=_accounts;
 @synthesize tasksViewController;
+@synthesize tableView=_tableView;
 
 
 - (void)viewDidLoad
@@ -54,6 +55,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Unselect the selected row if any
+	NSIndexPath*	selection = [self.tableView indexPathForSelectedRow];
+	if (selection)
+		[self.tableView deselectRowAtIndexPath:selection animated:animated];
     [super viewWillAppear:animated];
 }
 
@@ -145,12 +150,13 @@
     //detailViewController.detailItem=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     //TODO
     //additional work to check if it is all index then pass all the accounts
-    
+    [self.navigationController pushViewController:self.tasksViewController animated:YES];
     Account *selectedAccount=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    self.tasksViewController.detailViewController=self.detailViewController;
     self.tasksViewController.accounts=
     selectedAccount.type==All?[self.accounts objectAtIndex:indexPath.section+1]:[NSArray arrayWithObjects:[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row],nil];
     NSLog(@"selected accounts: %@", self.tasksViewController.accounts);
-    [self.navigationController pushViewController:self.tasksViewController animated:YES];
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,6 +180,7 @@
     [_bottomToolbar release];
     [_accountStorage release];
     [_accounts release];
+    [_tableView release];
     [super dealloc];
 }
 

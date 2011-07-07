@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "Task.h"
 #import "TaskList.h"
+#import "TaskCell.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -21,8 +22,8 @@
 @synthesize toolbar=_toolbar;
 @synthesize tableView=_tableView;
 @synthesize detailItem=_detailItem;
-@synthesize taskLists=_taskLists;
 @synthesize popoverController=_myPopoverController;
+@synthesize taskCell=_taskCell;
 
 #pragma mark - Managing the detail item
 
@@ -46,20 +47,6 @@
 
 - (void)configureView
 {
-    TaskList *taskList=[[TaskList alloc] init];
-    taskList.name=@"taskList";
-    
-    Task *task=[[Task alloc] init ];
-    task.name=@"task";
-    
-    for (int i=0;i<20;i++) {
-        [taskList addTask:task];
-    }
-    
-    self.taskLists=[NSMutableArray arrayWithObjects:taskList, nil];
-    // Update the user interface for the detail item.
-    [task release];
-    [taskList release];
     [self.tableView reloadData];
 }
 
@@ -90,30 +77,81 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"sections: %u\n", [self.taskLists count]);
-    return [self.taskLists count];
+    return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.detailItem name];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"section: %u rows: %u\n", section, [[[self.taskLists objectAtIndex:section] tasks] count]);
-    return [[[self.taskLists objectAtIndex:section] tasks] count];
+    return [[self.detailItem tasks] count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TaskCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TaskCell *cell = (TaskCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSLog(@"Cell Identifier not found.  Creating one from nib");
+        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"TaskCell" owner:self options:nil];
+        cell=_taskCell;
     }
+    else {
+        NSLog(@"Cell Identifier found.  Skipping creating one from nib");
+    }
+    /*
     
+    UIImage *image = [UIImage imageNamed:@"unchecked.png"]; 
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom]; 
+    CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height); 
+    button.frame = frame;	// match the button's size with the image size	
+    [button setBackgroundImage:image forState:UIControlStateNormal]; 
+    
+    // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet 
+    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside]; 
+    button.backgroundColor = [UIColor clearColor]; 
+    cell.editingAccessoryView = button;
     cell.textLabel.text = @"text";
-    NSLog(@"text");
+     */
+    [cell setTaskDescription:[[[self.detailItem tasks] objectAtIndex:indexPath.row] name]];
     return cell;
 }
+
+
+
+- (IBAction)checkButtonTapped:(id)sender event:(id)event 
+{ 
+    
+    TaskCell *cell=(TaskCell *)[[sender superview] superview];
+    [cell setTaskDescription:@"something else"];
+    
+    /*
+     Use the code below to find the indexpath given a click
+    NSSet *touches = [event allTouches]; 
+    UITouch *touch = [touches anyObject]; 
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView]; 
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition]; 
+    
+    if (indexPath != nil) {
+        NSLog(@"IndexPathFound %i", indexPath.row);
+     //this code does not work
+     //it always create a new cell
+        TaskCell *cell=(TaskCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+        cell.textLabel.text= @"something else";
+    //    [self accessoryButtonTappedForRowWithIndexPath:indexPath];
+        
+    }
+     */
+} 
+
 
 /*
  // Override to support conditional editing of the table view.
@@ -183,7 +221,6 @@
 
 - (void)viewDidLoad
 {
-    self.taskLists=[NSMutableArray arrayWithObjects:nil];
     [super viewDidLoad];
 }
 
@@ -212,7 +249,7 @@
     [_toolbar release];
     [_detailItem release];
     [_tableView release];
-    [_taskLists release];
+    [_taskCell release];
     [super dealloc];
 }
 
