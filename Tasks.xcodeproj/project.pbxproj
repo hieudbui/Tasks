@@ -35,6 +35,7 @@
 		73B7FDC313BB9E550001E053 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B7FDC113BB9E550001E053 /* unchecked.png */; };
 		73BE711013C6049B002A0DF8 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BE710F13C6049B002A0DF8 /* TaskCell.xib */; };
 		73BE711413C63231002A0DF8 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BE711313C63231002A0DF8 /* TaskCell.m */; };
+		73BE711713CDF83C002A0DF8 /* NetworkTaskStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BE711613CDF83B002A0DF8 /* NetworkTaskStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		73BE710F13C6049B002A0DF8 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		73BE711213C63231002A0DF8 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		73BE711313C63231002A0DF8 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		73BE711513CDF838002A0DF8 /* NetworkTaskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTaskStorage.h; sourceTree = "<group>"; };
+		73BE711613CDF83B002A0DF8 /* NetworkTaskStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTaskStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				73645F0013B11E1B00222CB1 /* TaskStorage.h */,
 				73645F1013B2306600222CB1 /* InMemoryTaskStorage.h */,
 				73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */,
+				73BE711513CDF838002A0DF8 /* NetworkTaskStorage.h */,
+				73BE711613CDF83B002A0DF8 /* NetworkTaskStorage.m */,
 				730C594313B11A0E00D443E6 /* Domain */,
 			);
 			name = Storage;
@@ -363,6 +368,7 @@
 				73645F1213B2306600222CB1 /* InMemoryTaskStorage.m in Sources */,
 				73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */,
 				73BE711413C63231002A0DF8 /* TaskCell.m in Sources */,
+				73BE711713CDF83C002A0DF8 /* NetworkTaskStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
