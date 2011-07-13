@@ -10,16 +10,13 @@
 
 @class DetailViewController;
 @class TasksViewController;
-@protocol AccountStorage;
 
 @interface RootViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
 }
 
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 @property (nonatomic, retain) IBOutlet TasksViewController *tasksViewController;
-
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
-@property (nonatomic, retain) IBOutlet id<AccountStorage> accountStorage;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *accounts;
 @end

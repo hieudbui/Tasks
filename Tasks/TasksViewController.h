@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class TaskStorage;
 @class DetailViewController;
-@protocol TaskStorage;
 
 @interface TasksViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
 }
@@ -19,7 +17,6 @@
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) NSArray *accounts;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet id<TaskStorage> taskStorage;
 @property (nonatomic, retain) NSArray *accountsToTaskLists;
 @end
 

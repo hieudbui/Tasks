@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class TaskList;
+@protocol TaskStorage;
 
 @interface Task : NSObject {
     
@@ -18,4 +19,8 @@
 @property(nonatomic,retain) NSString *note;
 @property(nonatomic,retain) NSDate *dueDate;
 @property(nonatomic,retain) TaskList *taskList;
+@property(nonatomic) bool completed;
+@property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
+
+-(void)save;
 @end

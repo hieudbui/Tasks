@@ -10,12 +10,13 @@
 #import "DetailViewController.h"
 #import "TasksViewController.h"
 #import "Account.h"
+#import "AccountStorage.h"
+#import "InMemoryAccountStorage.h"
 
 @implementation RootViewController
 		
 @synthesize detailViewController;
 @synthesize bottomToolbar=_bottomToolbar;
-@synthesize accountStorage=_accountStorage;
 @synthesize accounts=_accounts;
 @synthesize tasksViewController;
 @synthesize tableView=_tableView;
@@ -31,7 +32,8 @@
     
     self.accounts=[NSMutableArray arrayWithObjects: 
                [NSMutableArray arrayWithObjects:allAccount, nil], 
-               [self.accountStorage getAccounts],
+               [InMemoryAccountStorage getAccounts],
+                   nil,
                nil];
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] 
@@ -178,7 +180,6 @@
     [detailViewController release];
     [tasksViewController release];
     [_bottomToolbar release];
-    [_accountStorage release];
     [_accounts release];
     [_tableView release];
     [super dealloc];

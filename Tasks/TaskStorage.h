@@ -17,4 +17,5 @@
 - (NSArray *)getTasksForTaskList:(TaskList *)taskList;
 - (NSArray *)getAllTaskListsForAccount:(Account *)account;
 - (void) saveTask:(Task *)task;
+- (void) removeTaskList:(TaskList *)taskList;
 @end

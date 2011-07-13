@@ -121,7 +121,8 @@
     cell.editingAccessoryView = button;
     cell.textLabel.text = @"text";
      */
-    [cell setTaskDescription:[[[self.detailItem tasks] objectAtIndex:indexPath.row] name]];
+    //change the button color to done or not done depend on wheher the task is completed
+    [cell initialize:[[self.detailItem tasks] objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -131,7 +132,11 @@
 { 
     
     TaskCell *cell=(TaskCell *)[[sender superview] superview];
-    [cell setTaskDescription:@"something else"];
+    [cell toggle];
+    NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];
+   // NSLog(@"row=%i\n",indexPath.row);
+    [[[self.detailItem tasks] objectAtIndex:indexPath.row] save];
+    //change the button color to done
     
     /*
      Use the code below to find the indexpath given a click

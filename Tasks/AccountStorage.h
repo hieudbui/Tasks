@@ -11,6 +11,6 @@
 @class Account;
 
 @protocol AccountStorage <NSObject>
-- (NSArray *)getAccounts;
+
 - (void)saveAccount:(Account *)account;
 @end

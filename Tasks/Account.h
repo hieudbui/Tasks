@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TaskStorage;
+@protocol AccountStorage;
+@class TaskList;
 
 typedef enum {
     Local=0,
@@ -27,7 +30,11 @@ typedef enum {
 @property(nonatomic,retain) NSString *userName;
 @property(nonatomic,retain) NSString *password;
 @property(nonatomic,retain) NSString *name;
-@property(nonatomic,retain) NSArray *taskLists;
+@property(readwrite,nonatomic,retain) NSArray *taskLists;
+-(void) removeTaskList:(TaskList *)taskList;
+-(void) save;
+@property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
+@property(nonatomic,retain) NSObject<AccountStorage> *accountStorage;
 
 
 @end

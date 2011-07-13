@@ -1,8 +1,8 @@
 //
-//  InMemoryTaskStorage.h
+//  NetworkTaskStorage.h
 //  Tasks
 //
-//  Created by Hieu Bui on 6/22/11.
+//  Created by Hieu Bui on 7/13/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 #import "TaskStorage.h"
 
-@interface InMemoryTaskStorage : NSObject<TaskStorage> {
-    NSArray *_taskLists;
+@interface NetworkTaskStorage : NSObject<TaskStorage> {
+    
 }
 
 @end

@@ -11,45 +11,21 @@
 
 @implementation InMemoryAccountStorage
 
--(id) init
-{   
+
++(NSArray *)getAccounts
+{
     Account *localAccount=Account.localAccount;
     Account *googleAccount=Account.googleAccount;
-    NSMutableArray *accounts=[[NSMutableArray alloc] initWithObjects:localAccount, googleAccount, nil];
-    [self initWithAccounts:accounts];
-    [accounts release];
-    return self;
-}
-
--(InMemoryAccountStorage *) initWithAccounts:(NSArray *) accounts
-{
-    self=[super init];
-    if(self) {
-        [self setAccounts:accounts];
-    }
-    return self;
-}
-
-- (NSArray *)getAccounts
-{
-    return _accounts;
-}
-
--(void) setAccounts:(NSArray *)accounts 
-{
-    [_accounts release];
-    [accounts retain];
-    _accounts=accounts;
+    return [[[NSMutableArray alloc] initWithObjects:localAccount, googleAccount, nil] autorelease]; 
 }
 
 - (void)saveAccount:(Account *)account 
 {
-    
+    NSLog(@"Save account");
 }
 
 -(void) dealloc
 {
-    [_accounts dealloc];
     [super dealloc];
 }
 

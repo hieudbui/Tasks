@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Task;
 
 @interface TaskCell : UITableViewCell {
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *label;
-- (void) setTaskDescription:(NSString *)text;
-
+@property (nonatomic, retain) IBOutlet UIButton *button;
+- (void) initialize:(Task *)task;
+- (void) toggle;
 @end

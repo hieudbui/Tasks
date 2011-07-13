@@ -1,18 +1,23 @@
 //
-//  InMemoryTaskStorage.m
+//  NetworkTaskStorage.m
 //  Tasks
 //
-//  Created by Hieu Bui on 6/22/11.
+//  Created by Hieu Bui on 7/13/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "InMemoryTaskStorage.h"
+#import "NetworkTaskStorage.h"
 #import "Task.h"
 #import "TaskList.h"
 
+@implementation NetworkTaskStorage
 
-@implementation InMemoryTaskStorage
 
+-(id) init
+{   
+    self =[super init];
+    return self;
+}
 - (NSArray *)getAllTasksForAccount:(Account *)account
 {
     return nil;
@@ -32,7 +37,7 @@
         NSString *taskListName=@"taskList";
         taskList.name=[taskListName stringByAppendingFormat:@"%i",i];
         
-        for(int j=0;j<20;j++) {
+        for(int j=0;j<10;j++) {
             Task *task=[[Task alloc] init ];
             NSString *taskName=@"task";
             task.taskStorage=self;
@@ -49,16 +54,19 @@
         [taskList release];
     }
     return taskLists;
+
 }
 
 - (void) saveTask:(Task *)task
 {
-    NSLog(@"InMemoryTaskStorage Save task: %@",task);
+    NSLog(@"NetWorkTaskStorage Save task: %@",task);
 }
+
 
 - (void) removeTaskList:(TaskList *)taskList
 {
-    NSLog(@"InMemoryTaskStorage removeTaskList: %@\n",taskList);
+    NSLog(@"NetWorkTaskStorage removeTaskList: %@\n",taskList);
 }
+
 
 @end

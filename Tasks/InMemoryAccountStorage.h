@@ -11,9 +11,6 @@
 #import "AccountStorage.h"
 
 @interface InMemoryAccountStorage : NSObject<AccountStorage> {
-    NSArray *_accounts;
 }
 
--(void) setAccounts:(NSArray *)accounts;
--(InMemoryAccountStorage *) initWithAccounts:(NSArray *) accounts;
 @end

@@ -15,6 +15,7 @@
 }
 
 -(void) addTask:(Task *)task;
+-(void) remove;
 @property(nonatomic,retain) NSString *name;
 @property(nonatomic,retain) Account *account;
 @property(nonatomic,retain) NSArray *tasks;
