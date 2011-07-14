@@ -32,6 +32,7 @@ typedef enum {
 @property(nonatomic,retain) NSString *name;
 @property(readwrite,nonatomic,retain) NSArray *taskLists;
 -(void) removeTaskList:(TaskList *)taskList;
+-(void) addTaskList:(TaskList *)taskList;
 -(void) save;
 @property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
 @property(nonatomic,retain) NSObject<AccountStorage> *accountStorage;

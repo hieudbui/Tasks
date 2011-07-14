@@ -42,7 +42,7 @@
 
     if (self.popoverController != nil) {
         [self.popoverController dismissPopoverAnimated:YES];
-    }        
+    }
 }
 
 - (void)configureView

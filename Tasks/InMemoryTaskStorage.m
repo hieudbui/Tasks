@@ -61,4 +61,8 @@
     NSLog(@"InMemoryTaskStorage removeTaskList: %@\n",taskList);
 }
 
+- (void) addTaskList:(TaskList *)taskList
+{
+    NSLog(@"InMemoryTaskStorage addTaskList: %@\n",taskList);
+}
 @end

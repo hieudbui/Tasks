@@ -69,6 +69,14 @@
 {
     [self.tableView setEditing:NO animated:NO];
     self.navigationItem.rightBarButtonItem.title=@"Edit";
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"TasksViewController viewWillDisappear");
+    self.detailViewController.detailItem=nil;
+    [super viewWillDisappear:animated];
 }
 
 - (void) editButtonTapped
@@ -84,6 +92,7 @@
         editButton.title=@"Edit";
         [self.tableView setEditing:NO animated:YES];
     }
+    [self.tableView reloadData];
     //GenericViewController *genericViewController=[[GenericViewController alloc] init];
     //[self.navigationController pushViewController:genericViewController animated:true];
     //[genericViewController release];
@@ -115,11 +124,16 @@
     return [[[self.accountsToTaskLists objectAtIndex:indexPath.section] allValues] objectAtIndex:0];
 }
 
+- (NSString *)getAccountName:(NSInteger)index
+{
+    return [[[self.accountsToTaskLists objectAtIndex:index] allKeys] objectAtIndex:0];  
+}
+
 - (Account *)getAccount:(NSIndexPath *)indexPath
 {
-    id key=[[[self.accountsToTaskLists objectAtIndex:indexPath.section] allKeys] objectAtIndex:0];
+    NSString *accountName=[self getAccountName:indexPath.section];
     for(Account *account in _accounts) {
-        if(account.name==key) {
+        if(account.name==accountName) {
             return account;
         }
     }
@@ -140,8 +154,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"section: %u rows: %u\n",section, [[[[self.accountsToTaskLists objectAtIndex:section] allValues] objectAtIndex:0] count]);
-    return [[[[self.accountsToTaskLists objectAtIndex:section] allValues] objectAtIndex:0] count];
+    //TODO
+    //initialize an index path rather than duplicate the code here
+    int count=[[[[self.accountsToTaskLists objectAtIndex:section] allValues] objectAtIndex:0] count];
+    
+    if(self.tableView.editing) {
+        count++;
+    }
+    NSLog(@"section: %u rows: %u\n",section, count);
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,14 +173,32 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    cell.textLabel.text = [[self getTaskList:indexPath] name];
+    //NSLog(@"indexPath.row: %i taskLists count: %i\n",indexPath.row, [[self getTaskLists:indexPath] count]);
+    if(indexPath.row==[[self getTaskLists:indexPath] count] && self.tableView.editing) {
+        cell.textLabel.text=@"add new row";
+    }
+    else {
+        cell.textLabel.text = [[self getTaskList:indexPath] name];
+    }
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[[self.accountsToTaskLists objectAtIndex:section] allKeys] objectAtIndex:0];
+    return [self getAccountName:section];
 }
 
+- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.tableView.editing) {
+        if(indexPath.row==[[self getTaskLists:indexPath] count]) {
+            return UITableViewCellEditingStyleInsert;
+        }
+        else {
+            return UITableViewCellEditingStyleDelete;
+        }
+    }
+    return UITableViewCellEditingStyleNone;
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,15 +215,19 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"commitEditingStyle: %u forRowAtIndexPath: %@\n",editingStyle,indexPath);
-    //gotta remove the tasklist first
-    TaskList *toBeRemovedTaskList=[self getTaskList:indexPath];
-    if(detailViewController.detailItem==toBeRemovedTaskList) {
-        detailViewController.detailItem=nil;
-    }
-    [[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        //gotta remove the tasklist first
+        TaskList *toBeRemovedTaskList=[self getTaskList:indexPath];
+        if(self.detailViewController.detailItem==toBeRemovedTaskList) {
+            self.detailViewController.detailItem=nil;
+        }
+        [[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                           withRowAnimation:UITableViewRowAnimationFade];
-   
+    }
+    else if(editingStyle == UITableViewCellEditingStyleInsert) {
+        //display the option to create the new task list
+    }
 }
 /*
  // Override to support editing the table view.

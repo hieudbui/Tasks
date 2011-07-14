@@ -68,5 +68,9 @@
     NSLog(@"NetWorkTaskStorage removeTaskList: %@\n",taskList);
 }
 
+- (void) addTaskList:(TaskList *)taskList
+{
+    NSLog(@"NetWorkTaskStorage addTaskList: %@\n",taskList);
+}
 
 @end

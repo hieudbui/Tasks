@@ -71,11 +71,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"RootViewController viewWillDisappear");
 	[super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    
+    NSLog(@"RootViewController viewDidDisappear");
 	[super viewDidDisappear:animated];
 }
 
