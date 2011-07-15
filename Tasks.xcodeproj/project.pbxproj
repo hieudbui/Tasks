@@ -24,6 +24,8 @@
 		730C58D613AFB85E00D443E6 /* TasksTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 730C58D513AFB85E00D443E6 /* TasksTests.h */; };
 		730C593C13B10EFC00D443E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C593B13B10EFB00D443E6 /* RootView.xib */; };
 		730C593F13B1157B00D443E6 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C593E13B1157A00D443E6 /* Account.m */; };
+		7320FC1213D0D9F6003BC20F /* AccountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */; };
+		7320FC1313D0D9F6003BC20F /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */; };
 		7337404313CF6FFE00F82AA7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7337404213CF6FFE00F82AA7 /* DetailViewController.xib */; };
 		7337404813D0AE7F00F82AA7 /* TaskListEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7337404613D0AE7F00F82AA7 /* TaskListEditViewController.m */; };
 		7337404913D0AE7F00F82AA7 /* TaskListEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7337404713D0AE7F00F82AA7 /* TaskListEditViewController.xib */; };
@@ -78,6 +80,9 @@
 		730C593B13B10EFB00D443E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		730C593D13B1157A00D443E6 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		730C593E13B1157A00D443E6 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		7320FC0F13D0D9F5003BC20F /* AccountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountEditViewController.h; sourceTree = "<group>"; };
+		7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountEditViewController.m; sourceTree = "<group>"; };
+		7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountEditViewController.xib; sourceTree = "<group>"; };
 		7337404213CF6FFE00F82AA7 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		7337404513D0AE7E00F82AA7 /* TaskListEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListEditViewController.h; sourceTree = "<group>"; };
 		7337404613D0AE7F00F82AA7 /* TaskListEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListEditViewController.m; sourceTree = "<group>"; };
@@ -259,6 +264,9 @@
 				7337404A13D0B02E00F82AA7 /* TaskListsViewController.h */,
 				7337404B13D0B02F00F82AA7 /* TaskListsViewController.m */,
 				73B7FDBE13B8FA5B0001E053 /* TaskListsViewController.xib */,
+				7320FC0F13D0D9F5003BC20F /* AccountEditViewController.h */,
+				7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */,
+				7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -340,6 +348,7 @@
 				73BE711013C6049B002A0DF8 /* TaskCell.xib in Resources */,
 				7337404313CF6FFE00F82AA7 /* DetailViewController.xib in Resources */,
 				7337404913D0AE7F00F82AA7 /* TaskListEditViewController.xib in Resources */,
+				7320FC1313D0D9F6003BC20F /* AccountEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +398,7 @@
 				73BE711713CDF83C002A0DF8 /* NetworkTaskStorage.m in Sources */,
 				7337404813D0AE7F00F82AA7 /* TaskListEditViewController.m in Sources */,
 				7337404D13D0B03000F82AA7 /* TaskListsViewController.m in Sources */,
+				7320FC1213D0D9F6003BC20F /* AccountEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
