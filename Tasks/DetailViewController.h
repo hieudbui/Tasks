@@ -10,14 +10,9 @@
 
 @class TaskCell;
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
-
+@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
+    UIViewController *_viewController;
 }
-- (IBAction) checkButtonTapped:(id)sender event:(id)event;
-
-@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet TaskCell *taskCell;
-@property (nonatomic, retain) id detailItem;
+- (IBAction) setViewController:(UIViewController *)viewController;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
-#import "TasksViewController.h"
+#import "TaskListsViewController.h"
 #import "Account.h"
 #import "AccountStorage.h"
 #import "InMemoryAccountStorage.h"
@@ -18,7 +18,7 @@
 @synthesize detailViewController;
 @synthesize bottomToolbar=_bottomToolbar;
 @synthesize accounts=_accounts;
-@synthesize tasksViewController;
+@synthesize taskListsViewController;
 @synthesize tableView=_tableView;
 
 
@@ -155,12 +155,12 @@
     //detailViewController.detailItem=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     //TODO
     //additional work to check if it is all index then pass all the accounts
-    [self.navigationController pushViewController:self.tasksViewController animated:YES];
+    [self.navigationController pushViewController:self.taskListsViewController animated:YES];
     Account *selectedAccount=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    self.tasksViewController.detailViewController=self.detailViewController;
-    self.tasksViewController.accounts=
+    self.taskListsViewController.detailViewController=self.detailViewController;
+    self.taskListsViewController.accounts=
     selectedAccount.type==All?[self.accounts objectAtIndex:indexPath.section+1]:[NSArray arrayWithObjects:[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row],nil];
-    NSLog(@"selected accounts: %@", self.tasksViewController.accounts);
+    NSLog(@"selected accounts: %@", self.taskListsViewController.accounts);
    
 }
 
@@ -181,7 +181,7 @@
 - (void)dealloc
 {
     [detailViewController release];
-    [tasksViewController release];
+    [taskListsViewController release];
     [_bottomToolbar release];
     [_accounts release];
     [_tableView release];

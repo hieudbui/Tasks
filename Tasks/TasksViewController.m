@@ -1,234 +1,172 @@
 //
-//  TasksController.m
+//  TasksViewController.m
 //  Tasks
 //
-//  Created by Hieu Bui on 6/27/11.
+//  Created by Hieu Bui on 6/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "TasksViewController.h"
-#import "DetailViewController.h"
+#import "RootViewController.h"
 #import "Task.h"
 #import "TaskList.h"
-#import "Account.h"
+#import "TaskCell.h"
+
+@interface TasksViewController ()
+@property (nonatomic, retain) UIPopoverController *popoverController;
+- (void)configureView;
+@end
 
 @implementation TasksViewController
 
-@synthesize detailViewController;
-@synthesize bottomToolbar=_bottomToolbar;
-@synthesize accounts=_accounts;
+@synthesize toolbar=_toolbar;
 @synthesize tableView=_tableView;
-@synthesize accountsToTaskLists=_accountsToTaskLists;
+@synthesize detailItem=_detailItem;
+@synthesize popoverController=_myPopoverController;
+@synthesize taskCell=_taskCell;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [detailViewController release];
-    [_bottomToolbar release];
-    [_accounts release];
-    [_tableView release];
-    [_accountsToTaskLists release];
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    NSLog(@"TasksViewController.viewDidLoad invoked");
-    
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] 
-                                   initWithTitle:@"Edit" 
-                                   style: UIBarButtonItemStyleBordered 
-                                   target:self 
-                                   action:@selector(editButtonTapped)];
-    self.navigationItem.rightBarButtonItem=editButton;
-    [editButton release];
-    self.title=@"Tasks";
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.tableView setEditing:NO animated:NO];
-    self.navigationItem.rightBarButtonItem.title=@"Edit";
-    [super viewWillAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    NSLog(@"TasksViewController viewWillDisappear");
-    self.detailViewController.detailItem=nil;
-    [super viewWillDisappear:animated];
-}
-
-- (void) editButtonTapped
-{
-    NSLog(@"edit button tapped.  Switch to edit mode");
-    
-    UIBarButtonItem *editButton=self.navigationItem.rightBarButtonItem;
-    if(editButton.title==@"Edit") {
-        editButton.title=@"Done";
-        [self.tableView setEditing:YES animated:YES];
-    }
-    else {
-        editButton.title=@"Edit";
-        [self.tableView setEditing:NO animated:YES];
-    }
-    [self.tableView reloadData];
-    //GenericViewController *genericViewController=[[GenericViewController alloc] init];
-    //[self.navigationController pushViewController:genericViewController animated:true];
-    //[genericViewController release];
-}
+#pragma mark - Managing the detail item
 
 /*
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
-- (void)setAccounts:(NSArray *)accounts
+- (void)setDetailItem:(id)newDetailItem
 {
-        [_accounts release];
-        _accounts = [accounts retain];
-        NSLog(@"TasksViewController.setAccounts: %@", _accounts);
+    if (_detailItem != newDetailItem) {
+        [_detailItem release];
+        _detailItem = [newDetailItem retain];
         
-        NSMutableArray *accountsToTaskLists=[NSMutableArray arrayWithCapacity:[_accounts count]];
-        for(Account *account in _accounts) {
-            NSArray *taskLists=account.taskLists;
-            NSDictionary *accountToTaskLists=[NSDictionary dictionaryWithObjectsAndKeys:
-                    taskLists, account.name, nil];
-            [accountsToTaskLists addObject:accountToTaskLists];
-        }
-        self.accountsToTaskLists=accountsToTaskLists;
-    [self.tableView reloadData];
-          
-}
-
-- (NSArray *)getTaskLists:(NSIndexPath *)indexPath
-{
-    return [[[self.accountsToTaskLists objectAtIndex:indexPath.section] allValues] objectAtIndex:0];
-}
-
-- (NSString *)getAccountName:(NSInteger)index
-{
-    return [[[self.accountsToTaskLists objectAtIndex:index] allKeys] objectAtIndex:0];  
-}
-
-- (Account *)getAccount:(NSIndexPath *)indexPath
-{
-    NSString *accountName=[self getAccountName:indexPath.section];
-    for(Account *account in _accounts) {
-        if(account.name==accountName) {
-            return account;
-        }
+        // Update the view.
+        [self configureView];
     }
-    return nil;
+    
+    if (self.popoverController != nil) {
+        [self.popoverController dismissPopoverAnimated:YES];
+    }
 }
 
--(TaskList *)getTaskList:(NSIndexPath *)indexPath
+- (void)configureView
 {
-    return [[self getTaskLists:indexPath] objectAtIndex:indexPath.row];
+    [self.tableView reloadData];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"sections: %u\n", [self.accountsToTaskLists count]);
-    return [self.accountsToTaskLists count];
+    return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.detailItem name];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //TODO
-    //initialize an index path rather than duplicate the code here
-    int count=[[[[self.accountsToTaskLists objectAtIndex:section] allValues] objectAtIndex:0] count];
-    
-    if(self.tableView.editing) {
-        count++;
-    }
-    NSLog(@"section: %u rows: %u\n",section, count);
-    return count;
+    return [[self.detailItem tasks] count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TaskCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TaskCell *cell = (TaskCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    //NSLog(@"indexPath.row: %i taskLists count: %i\n",indexPath.row, [[self getTaskLists:indexPath] count]);
-    if(indexPath.row==[[self getTaskLists:indexPath] count] && self.tableView.editing) {
-        cell.textLabel.text=@"add new row";
+        NSLog(@"Cell Identifier not found.  Creating one from nib");
+        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"TaskCell" owner:self options:nil];
+        cell=_taskCell;
     }
     else {
-        cell.textLabel.text = [[self getTaskList:indexPath] name];
+        NSLog(@"Cell Identifier found.  Skipping creating one from nib");
     }
+    /*
+     
+     UIImage *image = [UIImage imageNamed:@"unchecked.png"]; 
+     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom]; 
+     CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height); 
+     button.frame = frame;	// match the button's size with the image size	
+     [button setBackgroundImage:image forState:UIControlStateNormal]; 
+     
+     // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet 
+     [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside]; 
+     button.backgroundColor = [UIColor clearColor]; 
+     cell.editingAccessoryView = button;
+     cell.textLabel.text = @"text";
+     */
+    //change the button color to done or not done depend on wheher the task is completed
+    [cell initialize:[[self.detailItem tasks] objectAtIndex:indexPath.row]];
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self getAccountName:section];
-}
 
-- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(self.tableView.editing) {
-        if(indexPath.row==[[self getTaskLists:indexPath] count]) {
-            return UITableViewCellEditingStyleInsert;
-        }
-        else {
-            return UITableViewCellEditingStyleDelete;
-        }
-    }
-    return UITableViewCellEditingStyleNone;
-}
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
+- (IBAction)checkButtonTapped:(id)sender event:(id)event 
+{ 
+    
+    TaskCell *cell=(TaskCell *)[[sender superview] superview];
+    [cell toggle];
+    NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];
+    // NSLog(@"row=%i\n",indexPath.row);
+    [[[self.detailItem tasks] objectAtIndex:indexPath.row] save];
+    //change the button color to done
+    
+    /*
+     Use the code below to find the indexpath given a click
+     NSSet *touches = [event allTouches]; 
+     UITouch *touch = [touches anyObject]; 
+     CGPoint currentTouchPosition = [touch locationInView:self.tableView]; 
+     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition]; 
+     
+     if (indexPath != nil) {
+     NSLog(@"IndexPathFound %i", indexPath.row);
+     //this code does not work
+     //it always create a new cell
+     TaskCell *cell=(TaskCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+     cell.textLabel.text= @"something else";
+     //    [self accessoryButtonTappedForRowWithIndexPath:indexPath];
+     
+     }
+     */
+} 
 
-- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"willBeginEditingRowAtIndexPath: %@\n",indexPath);
-}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"commitEditingStyle: %u forRowAtIndexPath: %@\n",editingStyle,indexPath);
-    if(editingStyle == UITableViewCellEditingStyleDelete) {
-        //gotta remove the tasklist first
-        TaskList *toBeRemovedTaskList=[self getTaskList:indexPath];
-        if(self.detailViewController.detailItem==toBeRemovedTaskList) {
-            self.detailViewController.detailItem=nil;
-        }
-        [[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                          withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if(editingStyle == UITableViewCellEditingStyleInsert) {
-        //display the option to create the new task list
-    }
-}
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
 /*
  // Override to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -262,31 +200,62 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    detailViewController.detailItem=[self getTaskList:indexPath];
-    
-    //TODO
-    //This is not clean
-    //this controller should not have a reference to the detailviewcontroller
-    //it is better to come up with a delegate
-    //then pass the delegate to this controller
-    //This controller will then call the delegate to do work
-    //the delegate can then call the detailviewcontroller as part of its work
 }
 
+#pragma mark - Split view support
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController: (UIPopoverController *)pc
+{
+    barButtonItem.title = @"Events";
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items insertObject:barButtonItem atIndex:0];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.popoverController = pc;
+}
+
+// Called when the view is shown again in the split view, invalidating the button and popover controller.
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items removeObjectAtIndex:0];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.popoverController = nil;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
 
 - (void)viewDidUnload
 {
+	[super viewDidUnload];
     
-    NSLog(@"view unload");
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+	self.popoverController = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+#pragma mark - Memory management
+
+- (void)didReceiveMemoryWarning
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)dealloc
+{
+    [_myPopoverController release];
+    [_toolbar release];
+    [_detailItem release];
+    [_tableView release];
+    [_taskCell release];
+    [super dealloc];
 }
 
 @end

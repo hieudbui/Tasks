@@ -1,5 +1,5 @@
 //
-//  TasksController.h
+//  TasksViewController.h
 //  Tasks
 //
 //  Created by Hieu Bui on 6/27/11.
@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class DetailViewController;
+@class TaskCell;
 
-@interface TasksViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface TasksViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
+    
 }
+- (IBAction) checkButtonTapped:(id)sender event:(id)event;
 
-@property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
-@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
-@property (nonatomic, retain) NSArray *accounts;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSArray *accountsToTaskLists;
+@property (nonatomic, retain) IBOutlet TaskCell *taskCell;
+@property (nonatomic, retain) id detailItem;
+
 @end
 
