@@ -12,13 +12,15 @@
 #import "Account.h"
 #import "AccountStorage.h"
 #import "InMemoryAccountStorage.h"
+#import "AccountEditViewController.h"
 
 @implementation RootViewController
 		
-@synthesize detailViewController;
+@synthesize detailViewController=_detailViewController;
 @synthesize bottomToolbar=_bottomToolbar;
 @synthesize accounts=_accounts;
-@synthesize taskListsViewController;
+@synthesize taskListsViewController=_taskListsViewController;
+@synthesize accountEditViewController=_accountEditViewController;
 @synthesize tableView=_tableView;
 
 
@@ -44,12 +46,25 @@
     self.navigationItem.rightBarButtonItem=editButton;
     [editButton release];
     self.title=@"Accounts";
-    
+    self.tableView.allowsSelectionDuringEditing=YES;
 }
 
 - (void) editButtonTapped
 {
     NSLog(@"edit button tapped.  Switch to edit mode");
+    
+    UIBarButtonItem *editButton=self.navigationItem.rightBarButtonItem;
+    if(editButton.title==@"Edit") {
+        editButton.title=@"Done";
+        [self.tableView setEditing:YES animated:YES];
+    }
+    else {
+        editButton.title=@"Edit";
+        [self.detailViewController setViewController:nil];
+        [self.tableView setEditing:NO animated:YES];        
+    }
+    [self.tableView reloadData];
+    
     //GenericViewController *genericViewController=[[GenericViewController alloc] init];
     //[self.navigationController pushViewController:genericViewController animated:true];
     //[genericViewController release];
@@ -58,9 +73,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // Unselect the selected row if any
-	NSIndexPath*	selection = [self.tableView indexPathForSelectedRow];
-	if (selection)
+	NSIndexPath *selection = [self.tableView indexPathForSelectedRow];
+	if (selection) {
 		[self.tableView deselectRowAtIndexPath:selection animated:animated];
+    }
+    [self.tableView setEditing:NO animated:NO];
+    self.navigationItem.rightBarButtonItem.title=@"Edit";
     [super viewWillAppear:animated];
 }
 
@@ -86,6 +104,16 @@
     return YES;
 }
 
+- (NSArray *)getAccounts:(NSInteger)section
+{
+    return [self.accounts objectAtIndex:section];
+}
+
+- (Account *) getAccount:(NSIndexPath *)indexPath
+{
+    return [[self getAccounts:indexPath.section] objectAtIndex:indexPath.row];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [self.accounts count];
@@ -94,9 +122,16 @@
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.accounts objectAtIndex:section] count];
+    NSInteger count=[[self getAccounts:section] count];
+    
+    if(section!=0 && self.tableView.editing) {
+        count++;
+    }
+    NSLog(@"section: %u rows: %u\n",section, count);
+    return count;
+    
 }
-		
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -106,33 +141,58 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    cell.textLabel.text = [[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
+    if(indexPath.row==[[self getAccounts:indexPath.section] count] && self.tableView.editing) {
+        cell.textLabel.text=@"add new row";
+    }
+    else {
+        cell.textLabel.text = [[self getAccount:indexPath] name];
+    }
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
+    if(indexPath.section==0) {
+        return NO;
+    }
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
+- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.tableView.editing) {
+        if(indexPath.row==[[self getAccounts:indexPath.section] count]) {
+            return UITableViewCellEditingStyleInsert;
+        }
+        else {
+            return UITableViewCellEditingStyleDelete;
+        }
+    }
+    return UITableViewCellEditingStyleNone;
+}
+
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"willBeginEditingRowAtIndexPath: %@\n",indexPath);
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
+    NSLog(@"commitEditingStyle: %u forRowAtIndexPath: %@\n",editingStyle,indexPath);
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        //gotta remove the account first
+        //[[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
+        //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+        //                      withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if(editingStyle == UITableViewCellEditingStyleInsert) {
+        //display the option to create the new task list
+         [self.detailViewController setViewController:self.accountEditViewController];  
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -155,12 +215,17 @@
     //detailViewController.detailItem=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     //TODO
     //additional work to check if it is all index then pass all the accounts
-    [self.navigationController pushViewController:self.taskListsViewController animated:YES];
-    Account *selectedAccount=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    self.taskListsViewController.detailViewController=self.detailViewController;
-    self.taskListsViewController.accounts=
-    selectedAccount.type==All?[self.accounts objectAtIndex:indexPath.section+1]:[NSArray arrayWithObjects:[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row],nil];
-    NSLog(@"selected accounts: %@", self.taskListsViewController.accounts);
+    if(self.tableView.editing==NO) {
+        [self.navigationController pushViewController:self.taskListsViewController animated:YES];
+        Account *selectedAccount=[self getAccount:indexPath];
+        self.taskListsViewController.detailViewController=self.detailViewController;
+        self.taskListsViewController.accounts=
+        selectedAccount.type==All?[self getAccounts:indexPath.section+1]:[NSArray arrayWithObjects:selectedAccount,nil];
+        NSLog(@"selected accounts: %@", self.taskListsViewController.accounts);
+    }
+    else {
+        [self.detailViewController setViewController:self.accountEditViewController]; 
+    }
    
 }
 
@@ -180,8 +245,9 @@
 
 - (void)dealloc
 {
-    [detailViewController release];
-    [taskListsViewController release];
+    [_detailViewController release];
+    [_taskListsViewController release];
+    [_accountEditViewController release];
     [_bottomToolbar release];
     [_accounts release];
     [_tableView release];
