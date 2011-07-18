@@ -57,11 +57,15 @@
     if(editButton.title==@"Edit") {
         editButton.title=@"Done";
         [self.tableView setEditing:YES animated:YES];
+        //TODO do an alpha fade out animation
+        self.bottomToolbar.hidden=YES;
     }
     else {
         editButton.title=@"Edit";
         [self.detailViewController setViewController:nil];
-        [self.tableView setEditing:NO animated:YES];        
+        [self.tableView setEditing:NO animated:YES];
+        //TODO do an alpha fade in animation
+        self.bottomToolbar.hidden=NO;
     }
     [self.tableView reloadData];
     
