@@ -11,7 +11,6 @@
 #import "TaskListsViewController.h"
 #import "Account.h"
 #import "AccountStorage.h"
-#import "InMemoryAccountStorage.h"
 #import "AccountEditViewController.h"
 
 @implementation RootViewController
@@ -22,6 +21,7 @@
 @synthesize taskListsViewController=_taskListsViewController;
 @synthesize accountEditViewController=_accountEditViewController;
 @synthesize tableView=_tableView;
+@synthesize accountStorage=_accountStorage;
 
 
 - (void)viewDidLoad
@@ -30,11 +30,11 @@
     //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     
-    Account *allAccount=Account.allAccount;
+    Account *allAccount=[self.accountStorage allAccount];
     
     self.accounts=[NSMutableArray arrayWithObjects: 
                [NSMutableArray arrayWithObjects:allAccount, nil], 
-               [InMemoryAccountStorage getAccounts],
+               [self.accountStorage getAccounts],
                    nil,
                nil];
     
@@ -183,9 +183,9 @@
     NSLog(@"commitEditingStyle: %u forRowAtIndexPath: %@\n",editingStyle,indexPath);
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         //gotta remove the account first
-        //[[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
-        //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-        //                      withRowAnimation:UITableViewRowAnimationFade];
+        [self.accountStorage removeAccount:[self getAccount:indexPath]];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                              withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert) {
         //display the option to create the new task list
@@ -224,9 +224,23 @@
         NSLog(@"selected accounts: %@", self.taskListsViewController.accounts);
     }
     else {
+        //set the account into the view controller
         [self.detailViewController setViewController:self.accountEditViewController]; 
+        Account *account=nil;
+        if(indexPath.row==[[self getAccounts:indexPath.section] count]) {
+            account=[self.accountStorage newAccount];
+        }
+        else {
+            account=[self getAccount:indexPath];
+        }
+        self.accountEditViewController.account=account;
     }
    
+}
+
+- (void) saveComplete:(Account *)account
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -251,6 +265,7 @@
     [_bottomToolbar release];
     [_accounts release];
     [_tableView release];
+    [_accountStorage release];
     [super dealloc];
 }
 

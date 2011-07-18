@@ -7,9 +7,18 @@
 //
 
 #import "AccountEditViewController.h"
+#import "EditAccountComplete.h"
+#import "Account.h"
 
 
 @implementation AccountEditViewController
+
+@synthesize account=_account;
+@synthesize name=_name;
+@synthesize type=_type;
+@synthesize userName=_userName;
+@synthesize password=_password;
+@synthesize delegate=_delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,8 +29,40 @@
     return self;
 }
 
+- (void) setAccount:(Account *)account
+{
+    if(_account!=account) {
+        [_account release];
+        [account retain];
+        _account=account;
+    }
+    NSLog(@"AccountEditViewController setAccount: %@\n",_account);
+    self.name.text=_account.name;
+    self.userName.text=_account.userName;
+    self.password.text=_account.password;
+    //self.type.text=_account.type;
+}
+
+
+- (IBAction)save:(id)sender
+{
+    NSLog(@"AccountEditViewController save");
+    self.account.name=self.name.text;
+    self.account.userName=self.userName.text;
+    self.account.password=self.password.text;
+    //self.account.type=self.type.text;
+    [self.account save];
+    [self.delegate saveComplete:self.account];
+}
+
 - (void)dealloc
 {
+    [_account release];
+    [_name release];
+    [_type release];
+    [_userName release];
+    [_password release];
+    [_delegate release];
     [super dealloc];
 }
 

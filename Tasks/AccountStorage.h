@@ -10,7 +10,13 @@
 
 @class Account;
 
-@protocol AccountStorage <NSObject>
 
+@protocol AccountStorage <NSObject>
 - (void)saveAccount:(Account *)account;
+- (void)removeAccount:(Account *)account;
+- (NSArray *)getAccounts;
+- (Account *)newAccount;
+- (Account *) localAccount;
+- (Account *) googleAccount;
+- (Account *) allAccount;
 @end

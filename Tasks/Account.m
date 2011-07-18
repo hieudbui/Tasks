@@ -9,7 +9,6 @@
 #import "Account.h"
 #import "InMemoryTaskStorage.h"
 #import "NetworkTaskStorage.h"
-#import "InMemoryAccountStorage.h"
 #import "AccountStorage.h"
 
 @implementation Account
@@ -21,9 +20,20 @@
 @synthesize taskLists=_taskLists;
 @synthesize taskStorage=_taskStorage;
 @synthesize accountStorage=_accountStorage;
+@synthesize new=_new;
+
+
+-(Account *) init
+{
+    self=[super init];
+    if(self) {
+        self.new=YES;
+    }
+    return self;
+}
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"name: %@ userName: %@ password: %@ type: %d", _name, _userName, _password,_type];
+    return [NSString stringWithFormat:@"name: %@ userName: %@ password: %@ type: %d new: %i", _name, _userName, _password,_type, _new];
 }
 
 -(NSArray *)taskLists
@@ -54,7 +64,8 @@
 
 -(void)save
 {
-    [_accountStorage saveAccount:self];
+    [self.accountStorage saveAccount:self];
+    self.new=NO;
 }
 
 - (void)dealloc
@@ -66,41 +77,6 @@
     [_accountStorage release];
     [_taskLists release];
     [super dealloc];
-}
-
-+(Account *) localAccount
-{
-    Account *account=[[Account alloc] init];
-    account.type=Local;
-    account.userName=@"local";
-    account.password=@"local";
-    account.name=@"local";
-    account.taskStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
-    account.accountStorage=[[[InMemoryAccountStorage alloc] init] autorelease];
-    return [account autorelease];
-}
-
-+(Account *) allAccount
-{
-    Account *account=[[Account alloc] init];
-    account.type=All;
-    account.userName=@"all";
-    account.password=@"all";
-    account.name=@"all";
-    return [account autorelease];
-}
-
-
-+(Account *) googleAccount
-{
-    Account *account=[[Account alloc] init];
-    account.type=Google;
-    account.userName=@"hieu.bui";
-    account.password=@"tobefilledinlater";
-    account.name=@"hieu.bui@gmail.com";
-    account.taskStorage=[[[NetworkTaskStorage alloc] init] autorelease];
-    account.accountStorage=[[[InMemoryAccountStorage alloc] init] autorelease];
-    return [account autorelease];    
 }
 
 @end
