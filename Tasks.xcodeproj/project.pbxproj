@@ -26,13 +26,13 @@
 		730C593F13B1157B00D443E6 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C593E13B1157A00D443E6 /* Account.m */; };
 		7320FC1213D0D9F6003BC20F /* AccountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */; };
 		7320FC1313D0D9F6003BC20F /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */; };
+		7320FC1713D4BABD003BC20F /* InMemoryAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7320FC1613D4BABD003BC20F /* InMemoryAccountStorage.m */; };
 		7337404313CF6FFE00F82AA7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7337404213CF6FFE00F82AA7 /* DetailViewController.xib */; };
 		7337404813D0AE7F00F82AA7 /* TaskListEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7337404613D0AE7F00F82AA7 /* TaskListEditViewController.m */; };
 		7337404913D0AE7F00F82AA7 /* TaskListEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7337404713D0AE7F00F82AA7 /* TaskListEditViewController.xib */; };
 		7337404D13D0B03000F82AA7 /* TaskListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7337404B13D0B02F00F82AA7 /* TaskListsViewController.m */; };
 		73645EF713B11C2700222CB1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EF613B11C2700222CB1 /* TaskList.m */; };
 		73645EFB13B11C3300222CB1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645EFA13B11C3300222CB1 /* Task.m */; };
-		73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */; };
 		73645F1213B2306600222CB1 /* InMemoryTaskStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */; };
 		73645F1913B2374F00222CB1 /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73645F1813B2374E00222CB1 /* TaskTests.m */; };
 		73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7FDB713B8F5A10001E053 /* TasksViewController.m */; };
@@ -83,6 +83,9 @@
 		7320FC0F13D0D9F5003BC20F /* AccountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountEditViewController.h; sourceTree = "<group>"; };
 		7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountEditViewController.m; sourceTree = "<group>"; };
 		7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountEditViewController.xib; sourceTree = "<group>"; };
+		7320FC1413D4B8B4003BC20F /* EditAccountComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAccountComplete.h; sourceTree = "<group>"; };
+		7320FC1513D4BABD003BC20F /* InMemoryAccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryAccountStorage.h; sourceTree = "<group>"; };
+		7320FC1613D4BABD003BC20F /* InMemoryAccountStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryAccountStorage.m; sourceTree = "<group>"; };
 		7337404213CF6FFE00F82AA7 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		7337404513D0AE7E00F82AA7 /* TaskListEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListEditViewController.h; sourceTree = "<group>"; };
 		7337404613D0AE7F00F82AA7 /* TaskListEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListEditViewController.m; sourceTree = "<group>"; };
@@ -95,8 +98,6 @@
 		73645EFA13B11C3300222CB1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		73645F0013B11E1B00222CB1 /* TaskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStorage.h; sourceTree = "<group>"; };
 		73645F0313B11F7E00222CB1 /* AccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStorage.h; sourceTree = "<group>"; };
-		73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryAccountStorage.h; sourceTree = "<group>"; };
-		73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryAccountStorage.m; sourceTree = "<group>"; };
 		73645F1013B2306600222CB1 /* InMemoryTaskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryTaskStorage.h; sourceTree = "<group>"; };
 		73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryTaskStorage.m; sourceTree = "<group>"; };
 		73645F1713B2374E00222CB1 /* TaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTests.h; sourceTree = "<group>"; };
@@ -231,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				73645F0313B11F7E00222CB1 /* AccountStorage.h */,
-				73645F0413B1205500222CB1 /* InMemoryAccountStorage.h */,
-				73645F0513B1205500222CB1 /* InMemoryAccountStorage.m */,
+				7320FC1513D4BABD003BC20F /* InMemoryAccountStorage.h */,
+				7320FC1613D4BABD003BC20F /* InMemoryAccountStorage.m */,
 				73645F0013B11E1B00222CB1 /* TaskStorage.h */,
 				73645F1013B2306600222CB1 /* InMemoryTaskStorage.h */,
 				73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */,
@@ -246,10 +247,10 @@
 		73645F0713B1241000222CB1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				730C593B13B10EFB00D443E6 /* RootView.xib */,
 				730C58BA13AFB85E00D443E6 /* DetailViewController.h */,
 				730C58BB13AFB85E00D443E6 /* DetailViewController.m */,
 				7337404213CF6FFE00F82AA7 /* DetailViewController.xib */,
+				730C593B13B10EFB00D443E6 /* RootView.xib */,
 				730C58C013AFB85E00D443E6 /* RootViewController.h */,
 				730C58C113AFB85E00D443E6 /* RootViewController.m */,
 				73B7FDB613B8F5A10001E053 /* TasksViewController.h */,
@@ -267,6 +268,7 @@
 				7320FC0F13D0D9F5003BC20F /* AccountEditViewController.h */,
 				7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */,
 				7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */,
+				7320FC1413D4B8B4003BC20F /* EditAccountComplete.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -391,7 +393,6 @@
 				730C593F13B1157B00D443E6 /* Account.m in Sources */,
 				73645EF713B11C2700222CB1 /* TaskList.m in Sources */,
 				73645EFB13B11C3300222CB1 /* Task.m in Sources */,
-				73645F0613B1205500222CB1 /* InMemoryAccountStorage.m in Sources */,
 				73645F1213B2306600222CB1 /* InMemoryTaskStorage.m in Sources */,
 				73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */,
 				73BE711413C63231002A0DF8 /* TaskCell.m in Sources */,
@@ -399,6 +400,7 @@
 				7337404813D0AE7F00F82AA7 /* TaskListEditViewController.m in Sources */,
 				7337404D13D0B03000F82AA7 /* TaskListsViewController.m in Sources */,
 				7320FC1213D0D9F6003BC20F /* AccountEditViewController.m in Sources */,
+				7320FC1713D4BABD003BC20F /* InMemoryAccountStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
