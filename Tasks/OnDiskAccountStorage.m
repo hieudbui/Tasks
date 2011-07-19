@@ -115,7 +115,7 @@
     account.name=@"hieu.bui@gmail.com";
     account.new=NO;
     account.accountStorage=self;
-    account.taskStorage=[[[NetworkTaskStorage alloc] init] autorelease];
+    account.taskStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
     return [account autorelease];    
 }
 
