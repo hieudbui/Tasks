@@ -62,15 +62,19 @@
     NSLog(@"NetWorkTaskStorage Save task: %@",task);
 }
 
+- (void) saveTaskList:(TaskList *)taskList forAccount:(Account *)account
+{
+    
+}
 
 - (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
     NSLog(@"NetWorkTaskStorage removeTaskList: %@\n",taskList);
 }
 
-- (void) addTaskList:(TaskList *)taskList
+- (void) addTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
-    NSLog(@"NetWorkTaskStorage addTaskList: %@\n",taskList);
+    NSLog(@"NetWorkTaskStorage addTaskList: %@ forAccount: %@\n",taskList,account);
 }
 
 @end

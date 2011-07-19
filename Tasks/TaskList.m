@@ -45,7 +45,7 @@
 
 -(void) save
 {
-    [self.taskStorage self];
+    [self.taskStorage saveTaskList:self forAccount:self.account];
     self.new=NO;
 }
 

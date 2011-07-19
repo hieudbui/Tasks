@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol EditTaskListComplete;
+@protocol EditListComplete;
 @class TaskList;
 
 @interface TaskListEditViewController : UIViewController {
@@ -16,7 +16,7 @@
 }
 @property (nonatomic, retain) TaskList *taskList;
 @property (nonatomic, retain) IBOutlet UITextField *name;
-@property (nonatomic, retain) IBOutlet NSObject<EditTaskListComplete> *delegate;
+@property (nonatomic, retain) IBOutlet NSObject<EditListComplete> *delegate;
 
 - (IBAction)save:(id)sender;
 

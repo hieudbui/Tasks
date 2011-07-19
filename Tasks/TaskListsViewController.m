@@ -261,8 +261,16 @@ prin//
         self.tasksViewController.detailItem=[self getTaskList:indexPath];
     }
     else {
-        [self.detailViewController setViewController:self.taskListEditViewController];  
-        self.taskListEditViewController.taskList=[self getTaskList:indexPath];
+        [self.detailViewController setViewController:self.taskListEditViewController];
+        TaskList *taskList=nil;
+        if(indexPath.row==[[self getTaskLists:indexPath] count]) {
+            taskList=[[self getAccount:indexPath] newTaskList];
+        }
+        else {
+            taskList=[self getTaskList:indexPath];
+        }
+        
+        self.taskListEditViewController.taskList=taskList;
     }
     //TODO
     //This is not clean

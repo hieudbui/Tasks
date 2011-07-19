@@ -64,6 +64,7 @@
 {
     TaskList *taskList=[[[TaskList alloc] init] autorelease];
     taskList.taskListId=[[NSProcessInfo processInfo] globallyUniqueString];
+    taskList.account=self;
     taskList.taskStorage=self.taskStorage;
     return taskList;
 }

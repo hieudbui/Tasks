@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditTaskListComplete.h"
+#import "EditListComplete.h"
 
 @class DetailViewController;
 @class TasksViewController;
 @class TaskListEditViewController;
 
-@interface TaskListsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, EditTaskListComplete> {
+@interface TaskListsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, EditListComplete> {
 }
 
 @property (nonatomic, retain) DetailViewController *detailViewController;

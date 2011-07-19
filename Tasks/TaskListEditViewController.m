@@ -8,6 +8,7 @@
 
 #import "TaskListEditViewController.h"
 #import "TaskList.h"
+#import "EditListComplete.h"
 
 @implementation TaskListEditViewController
 
@@ -45,7 +46,7 @@
     NSLog(@"TaskListEditViewController save");
     self.taskList.name=self.name.text;
     [self.taskList save];
-    [self.delegate saveTaskList:self.taskList];
+    [self.delegate saveComplete:self.taskList];
 }
 
 

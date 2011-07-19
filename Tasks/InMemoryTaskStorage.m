@@ -37,9 +37,13 @@
     return nil;
 }
 
+- (NSMutableArray *)getTaskListsForAccount:(Account *)account {
+    return [self.accountToTaskLists valueForKey:account.accountId];
+}
+
 - (NSArray *)getAllTaskListsForAccount:(Account *)account
 {
-    NSMutableArray *taskLists=[self.accountToTaskLists valueForKey:account.accountId];
+    NSMutableArray *taskLists=[self getTaskListsForAccount:account];
     
     if(taskLists==nil) {
         taskLists=[NSMutableArray arrayWithObjects:nil];
@@ -51,6 +55,7 @@
             NSString *taskListName=@"taskList";
             taskList.name=[taskListName stringByAppendingFormat:@"%i",i];
             taskList.taskListId=[[NSProcessInfo processInfo] globallyUniqueString];
+            taskList.account=account;
             for(int j=0;j<20;j++) {
                 Task *task=[[Task alloc] init ];
                 NSString *taskName=@"task";
@@ -79,18 +84,24 @@
 - (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
     NSLog(@"InMemoryTaskStorage removeTaskList: %@ forAccount: %@\n",taskList,account);
-    NSMutableArray *taskLists=[self.accountToTaskLists valueForKey:account.accountId];
+    NSMutableArray *taskLists=[self getTaskListsForAccount:account];
     [taskLists removeObject:taskList];
 }
 
-- (void) addTaskList:(TaskList *)taskList
+- (void) addTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
-    NSLog(@"InMemoryTaskStorage addTaskList: %@\n",taskList);
+    NSLog(@"InMemoryTaskStorage addTaskList: %@ forAccount: %@\n",taskList, account);
+    NSMutableArray *taskLists=[self getTaskListsForAccount:account];
+    [taskLists addObject:taskList];
+    
 }
 
-- (void) saveTaskList:(TaskList *)taskList
+- (void) saveTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
-    
+    if(taskList.new) {
+        NSMutableArray *taskLists=[self getTaskListsForAccount:account];
+        [taskLists addObject:taskList];
+    }
 }
 
 - (void) dealloc
