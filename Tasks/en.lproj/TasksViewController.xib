@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>IBUIBarButtonItem</string>
 			<string>IBUIToolbar</string>
 			<string>IBUITableView</string>
 			<string>IBUIView</string>
@@ -70,12 +71,23 @@
 						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="755515546"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSMutableArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIBarButtonItem" id="375050366">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<float key="IBUIWidth">648</float>
+								<reference key="IBUIToolbar" ref="410698538"/>
+								<int key="IBUISystemItemIdentifier">6</int>
+							</object>
+							<object class="IBUIBarButtonItem" id="410427309">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIToolbar" ref="410698538"/>
+								<int key="IBUISystemItemIdentifier">4</int>
+							</object>
 						</object>
 					</object>
 				</object>
@@ -192,6 +204,8 @@
 						<reference key="object" ref="410698538"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="410427309"/>
+							<reference ref="375050366"/>
 						</object>
 						<reference key="parent" ref="647120888"/>
 					</object>
@@ -199,6 +213,20 @@
 						<int key="objectID">68</int>
 						<reference key="object" ref="755515546"/>
 						<reference key="parent" ref="647120888"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">73</int>
+						<reference key="object" ref="410427309"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
+						<reference key="parent" ref="410698538"/>
+						<string key="objectName">Bar Button Item - Add</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">74</int>
+						<reference key="object" ref="375050366"/>
+						<reference key="parent" ref="410698538"/>
 					</object>
 				</object>
 			</object>
@@ -210,6 +238,7 @@
 					<string>-2.CustomClassName</string>
 					<string>63.IBPluginDependency</string>
 					<string>68.IBPluginDependency</string>
+					<string>74.IBPluginDependency</string>
 					<string>8.IBEditorWindowLastContentRect</string>
 					<string>8.IBPluginDependency</string>
 				</object>
@@ -217,6 +246,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TasksViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{194, 0}, {783, 856}}</string>
@@ -235,7 +265,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">71</int>
+			<int key="maxID">76</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

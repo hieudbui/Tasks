@@ -146,7 +146,7 @@
     }
 
     if(indexPath.row==[[self getAccounts:indexPath.section] count] && self.tableView.editing) {
-        cell.textLabel.text=@"add new row";
+        cell.textLabel.text=@"add new account";
     }
     else {
         cell.textLabel.text = [[self getAccount:indexPath] name];
@@ -192,8 +192,8 @@
                               withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert) {
-        //display the option to create the new task list
-         [self.detailViewController setViewController:self.accountEditViewController];  
+        [self.detailViewController setViewController:self.accountEditViewController];  
+        self.accountEditViewController.account=[self.accountStorage newAccount];
     }
 }
 

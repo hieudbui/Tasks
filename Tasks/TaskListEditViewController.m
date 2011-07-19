@@ -7,9 +7,13 @@
 //
 
 #import "TaskListEditViewController.h"
-
+#import "TaskList.h"
 
 @implementation TaskListEditViewController
+
+@synthesize name=_name;
+@synthesize taskList=_taskList;
+@synthesize delegate=_delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +26,9 @@
 
 - (void)dealloc
 {
+    [_name release];
+    [_taskList release];
+    [_delegate release];
     [super dealloc];
 }
 
@@ -31,6 +38,26 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (IBAction)save:(id)sender
+{
+    NSLog(@"TaskListEditViewController save");
+    self.taskList.name=self.name.text;
+    [self.taskList save];
+    [self.delegate saveTaskList:self.taskList];
+}
+
+
+- (void) setTaskList:(TaskList *)taskList
+{
+    if(_taskList!=taskList) {
+        [_taskList release];
+        [taskList retain];
+        _taskList=taskList;
+    }
+    NSLog(@"TaskListEditViewController setTaskList: %@\n",_taskList);
+    self.name.text=_taskList.name;
 }
 
 #pragma mark - View lifecycle

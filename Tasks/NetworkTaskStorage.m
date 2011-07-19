@@ -63,7 +63,7 @@
 }
 
 
-- (void) removeTaskList:(TaskList *)taskList
+- (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
     NSLog(@"NetWorkTaskStorage removeTaskList: %@\n",taskList);
 }

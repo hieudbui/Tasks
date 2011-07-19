@@ -10,14 +10,15 @@
 #import "InMemoryTaskStorage.h"
 #import "NetworkTaskStorage.h"
 #import "AccountStorage.h"
+#import "TaskList.h"
 
 @implementation Account
 
+@synthesize accountId=_accountId;
 @synthesize type=_type;
 @synthesize userName=_userName;
 @synthesize password=_password;
 @synthesize name=_name;
-@synthesize taskLists=_taskLists;
 @synthesize taskStorage=_taskStorage;
 @synthesize accountStorage=_accountStorage;
 @synthesize new=_new;
@@ -33,27 +34,18 @@
 }
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"name: %@ userName: %@ password: %@ type: %d new: %i", _name, _userName, _password,_type, _new];
+    return [NSString stringWithFormat:@"accountId: %@ name: %@ userName: %@ password: %@ type: %d new: %i", _accountId, _name, _userName, _password,_type, _new];
 }
 
 -(NSArray *)taskLists
 {
-    if(_taskLists == nil) {
-        _taskLists=[_taskStorage getAllTaskListsForAccount:self];
-        [_taskLists retain];
-    }
-    return _taskLists;
+    return [_taskStorage getAllTaskListsForAccount:self];
 }
 
 -(void)removeTaskList:(TaskList *)taskList
 {
     NSLog(@"remove taskList: %@\n",taskList);
-    //TODO
-    //revisit this code
-    //we should remove the tasklist from the taskstorage
-    //and reload the tasklists
-    [((NSMutableArray *)self.taskLists) removeObject:taskList];
-    [_taskStorage removeTaskList:taskList];
+    [_taskStorage removeTaskList:taskList forAccount:self];
 }
 
 -(void)addTaskList:(TaskList *)taskList
@@ -68,14 +60,22 @@
     self.new=NO;
 }
 
+-(TaskList *) newTaskList
+{
+    TaskList *taskList=[[[TaskList alloc] init] autorelease];
+    taskList.taskListId=[[NSProcessInfo processInfo] globallyUniqueString];
+    taskList.taskStorage=self.taskStorage;
+    return taskList;
+}
+
 - (void)dealloc
 {
+    [_accountId release];
     [_userName release];
     [_password release];
     [_name release];
     [_taskStorage release];
     [_accountStorage release];
-    [_taskLists release];
     [super dealloc];
 }
 

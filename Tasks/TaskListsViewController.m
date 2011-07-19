@@ -1,4 +1,4 @@
-//
+prin//
 //  TasksController.m
 //  Tasks
 //
@@ -183,7 +183,7 @@
     }
     //NSLog(@"indexPath.row: %i taskLists count: %i\n",indexPath.row, [[self getTaskLists:indexPath] count]);
     if(indexPath.row==[[self getTaskLists:indexPath] count] && self.tableView.editing) {
-        cell.textLabel.text=@"add new row";
+        cell.textLabel.text=@"add new list";
     }
     else {
         cell.textLabel.text = [[self getTaskList:indexPath] name];
@@ -261,7 +261,8 @@
         self.tasksViewController.detailItem=[self getTaskList:indexPath];
     }
     else {
-        [self.detailViewController setViewController:self.taskListEditViewController];        
+        [self.detailViewController setViewController:self.taskListEditViewController];  
+        self.taskListEditViewController.taskList=[self getTaskList:indexPath];
     }
     //TODO
     //This is not clean
@@ -286,6 +287,10 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void) saveComplete:(TaskList *)taskList{
+    [self.tableView reloadData];    
 }
 
 @end

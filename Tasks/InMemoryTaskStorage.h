@@ -11,7 +11,8 @@
 #import "TaskStorage.h"
 
 @interface InMemoryTaskStorage : NSObject<TaskStorage> {
-    NSArray *_taskLists;
 }
+
+@property (nonatomic, retain) NSDictionary *accountToTaskLists;
 
 @end

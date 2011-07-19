@@ -9,13 +9,28 @@
 #import "TaskList.h"
 #import "Account.h"
 #import "Task.h"
+#import "TaskStorage.h"
 
 
 @implementation TaskList
 
+@synthesize taskListId=_taskListId;
 @synthesize name=_name;
 @synthesize account=_account;
 @synthesize tasks=_tasks;
+@synthesize new=_new;
+@synthesize taskStorage=_taskStorage;
+
+
+-(TaskList *) init
+{
+    self=[super init];
+    if(self) {
+        self.new=YES;
+    }
+    return self;
+}
+
 
 -(void) addTask:(Task *)task
 {
@@ -24,14 +39,29 @@
         self.tasks=[NSMutableArray arrayWithObjects:nil]; 
     }
     task.taskList=self;
-    [_tasks addObject:task];
+    [(NSMutableArray *)_tasks addObject:task];
     
 }
+
+-(void) save
+{
+    [self.taskStorage self];
+    self.new=NO;
+}
+
+
+-(NSString *) description {
+    return [NSString stringWithFormat:@"taskListId: %@ name: new: %i", _taskListId, _name, _new];
+}
+
+
 -(void) dealloc
 {
+    [_taskListId release];
     [_account release];
     [_name release];
     [_tasks release];
+    [_taskStorage release];
     [super dealloc];
 }
 @end

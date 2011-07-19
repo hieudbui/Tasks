@@ -22,17 +22,20 @@ typedef enum {
 }
 
 @property AccountType type;
+@property(nonatomic,retain) NSString *accountId;
 @property(nonatomic,retain) NSString *userName;
 @property(nonatomic,retain) NSString *password;
 @property(nonatomic,retain) NSString *name;
-@property(readwrite,nonatomic,retain) NSArray *taskLists;
 @property (nonatomic) BOOL new;
 
 @property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
 @property(nonatomic,retain) NSObject<AccountStorage> *accountStorage;
 
+
+-(NSArray *)taskLists;
 -(void) removeTaskList:(TaskList *)taskList;
 -(void) addTaskList:(TaskList *)taskList;
+-(TaskList *) newTaskList;
 -(void) save;
 
 

@@ -10,14 +10,19 @@
 
 @class Account;
 @class Task;
+@protocol TaskStorage;
 
 @interface TaskList : NSObject {
 }
 
 -(void) addTask:(Task *)task;
--(void) remove;
+-(void) save;
+
+@property(nonatomic,retain) NSString *taskListId;
 @property(nonatomic,retain) NSString *name;
 @property(nonatomic,retain) Account *account;
 @property(nonatomic,retain) NSArray *tasks;
+@property (nonatomic) BOOL new;
+@property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
 
 @end

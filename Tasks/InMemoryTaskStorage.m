@@ -9,9 +9,23 @@
 #import "InMemoryTaskStorage.h"
 #import "Task.h"
 #import "TaskList.h"
+#import "Account.h"
 
 
 @implementation InMemoryTaskStorage
+
+@synthesize accountToTaskLists=_accountToTaskLists;
+
+- (InMemoryTaskStorage *) init
+{
+    self=[super init];
+    
+    if(self) {
+        self.accountToTaskLists=[NSMutableDictionary dictionary];
+    }
+    
+    return self;
+}
 
 - (NSArray *)getAllTasksForAccount:(Account *)account
 {
@@ -25,28 +39,34 @@
 
 - (NSArray *)getAllTaskListsForAccount:(Account *)account
 {
-    NSMutableArray *taskLists=[NSMutableArray arrayWithObjects:nil];
+    NSMutableArray *taskLists=[self.accountToTaskLists valueForKey:account.accountId];
     
-    for(int i=0;i<5;i++) {
-        TaskList *taskList=[[TaskList alloc] init];
-        NSString *taskListName=@"taskList";
-        taskList.name=[taskListName stringByAppendingFormat:@"%i",i];
+    if(taskLists==nil) {
+        taskLists=[NSMutableArray arrayWithObjects:nil];
+        [self.accountToTaskLists setValue:taskLists forKey:account.accountId];
         
-        for(int j=0;j<20;j++) {
-            Task *task=[[Task alloc] init ];
-            NSString *taskName=@"task";
-            task.taskStorage=self;
-            task.dueDate=[NSDate date];
-            task.name=[taskName stringByAppendingFormat:@"%i%i",i,j];
-            if(j%2==0) {
-                task.completed=true;
+        
+        for(int i=0;i<5;i++) {
+            TaskList *taskList=[[TaskList alloc] init];
+            NSString *taskListName=@"taskList";
+            taskList.name=[taskListName stringByAppendingFormat:@"%i",i];
+            taskList.taskListId=[[NSProcessInfo processInfo] globallyUniqueString];
+            for(int j=0;j<20;j++) {
+                Task *task=[[Task alloc] init ];
+                NSString *taskName=@"task";
+                task.taskStorage=self;
+                task.dueDate=[NSDate date];
+                task.name=[taskName stringByAppendingFormat:@"%i%i",i,j];
+                if(j%2==0) {
+                    task.completed=true;
+                }
+                [taskList addTask: task];
+                [task release];
+                
             }
-            [taskList addTask: task];
-            [task release];
-            
+            [taskLists addObject:taskList];
+            [taskList release];
         }
-        [taskLists addObject:taskList];
-        [taskList release];
     }
     return taskLists;
 }
@@ -56,13 +76,27 @@
     NSLog(@"InMemoryTaskStorage Save task: %@",task);
 }
 
-- (void) removeTaskList:(TaskList *)taskList
+- (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account
 {
-    NSLog(@"InMemoryTaskStorage removeTaskList: %@\n",taskList);
+    NSLog(@"InMemoryTaskStorage removeTaskList: %@ forAccount: %@\n",taskList,account);
+    NSMutableArray *taskLists=[self.accountToTaskLists valueForKey:account.accountId];
+    [taskLists removeObject:taskList];
 }
 
 - (void) addTaskList:(TaskList *)taskList
 {
     NSLog(@"InMemoryTaskStorage addTaskList: %@\n",taskList);
 }
+
+- (void) saveTaskList:(TaskList *)taskList
+{
+    
+}
+
+- (void) dealloc
+{
+    [_accountToTaskLists release];
+    [super dealloc];
+}
+
 @end
