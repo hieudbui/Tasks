@@ -51,7 +51,7 @@
 -(void)addTaskList:(TaskList *)taskList
 {
     NSLog(@"Account addTaskList: %@\n",taskList);
-    [_taskStorage addTaskList:taskList];
+    [_taskStorage addTaskList:taskList forAccount:self];
 }
 
 -(void)save
