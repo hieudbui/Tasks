@@ -13,10 +13,9 @@
 @class TaskList;
 
 @protocol TaskStorage <NSObject> 
-- (NSArray *)getAllTasksForAccount:(Account *)account;
 - (NSArray *)getTasksForTaskList:(TaskList *)taskList;
-- (NSArray *)getAllTaskListsForAccount:(Account *)account;
-- (void) saveTask:(Task *)task;
+- (NSArray *)getTaskListsForAccount:(Account *)account;
+- (void) saveTask:(Task *)task forTaskList:(TaskList *)taskList;
 - (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account;
 - (void) addTaskList:(TaskList *)taskList forAccount:(Account *)account;
 - (void) saveTaskList:(TaskList *)taskList forAccount:(Account *)account;

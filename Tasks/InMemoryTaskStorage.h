@@ -10,9 +10,12 @@
 
 #import "TaskStorage.h"
 
+
 @interface InMemoryTaskStorage : NSObject<TaskStorage> {
 }
 
 @property (nonatomic, retain) NSDictionary *accountToTaskLists;
+@property (nonatomic, retain) NSDictionary *taskListToTasks;
+
 
 @end

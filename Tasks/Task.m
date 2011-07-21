@@ -13,26 +13,40 @@
 
 @implementation Task
 
+@synthesize taskId=_taskId;
 @synthesize name=_name;
 @synthesize note=_note;
 @synthesize dueDate=_dueDate;
 @synthesize taskList=_taskList;
 @synthesize completed=_completed;
 @synthesize taskStorage=_taskStorage;
+@synthesize new=_new;
+
+-(Task *) init
+{
+    self=[super init];
+    if(self) {
+        self.new=YES;
+    }
+    return self;
+}
+
 
 -(NSString *) description {
     return [NSString stringWithFormat:
-            @"name: %@\nnote: %@\ndueDate: %@\ncompleted: %i\ntaskList: %@\n",
-            _name, _note,_dueDate,_completed,_taskList];
+            @"id: %@, name: %@ note: %@ dueDate: %@ completed: %i new: %i taskList: %@\n",
+            _taskId, _name, _note,_dueDate,_completed,_new, _taskList];
 }
 
 -(void)save
 {
-    [self.taskStorage saveTask:self];
+    [self.taskStorage saveTask:self forTaskList:self.taskList];
+    self.new=NO;
 }
 
 -(void) dealloc
 {
+    [_taskId release];
     [_name release];
     [_note release];
     [_dueDate release];

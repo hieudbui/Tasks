@@ -11,18 +11,18 @@
 #import "Task.h"
 #import "TaskList.h"
 #import "TaskCell.h"
-
-@interface TasksViewController ()
-@property (nonatomic, retain) UIPopoverController *popoverController;
-- (void)configureView;
-@end
+#import "TaskEditViewController.h"
+#import "ClearTasksViewController.h"
 
 @implementation TasksViewController
 
 @synthesize toolbar=_toolbar;
 @synthesize tableView=_tableView;
-@synthesize detailItem=_detailItem;
-@synthesize popoverController=_myPopoverController;
+@synthesize taskList=_taskList;
+@synthesize clearTasksPopoverController=_clearTasksPopoverController;
+@synthesize clearTasksViewController=_clearTasksViewController;
+@synthesize addTaskPopoverController=_addTaskPopoverController;
+@synthesize taskEditViewController=_taskEditViewController;
 @synthesize taskCell=_taskCell;
 
 #pragma mark - Managing the detail item
@@ -30,24 +30,71 @@
 /*
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
-- (void)setDetailItem:(id)newDetailItem
+- (void)setTaskList:(TaskList *)taskList
 {
-    if (_detailItem != newDetailItem) {
-        [_detailItem release];
-        _detailItem = [newDetailItem retain];
-        
+    if (_taskList != taskList) {
+        [_taskList release];
+        _taskList = [taskList retain];
         // Update the view.
-        [self configureView];
-    }
-    
-    if (self.popoverController != nil) {
-        [self.popoverController dismissPopoverAnimated:YES];
+        [self.tableView reloadData];
     }
 }
 
-- (void)configureView
+- (void) add:(id)sender
 {
-    [self.tableView reloadData];
+    NSLog(@"TasksViewController add: %@\n",sender);
+    
+    if ([self.clearTasksPopoverController isPopoverVisible]) {
+        [self.clearTasksPopoverController dismissPopoverAnimated:YES];
+    }
+    
+    if ([self.addTaskPopoverController isPopoverVisible]) {
+        [self.addTaskPopoverController dismissPopoverAnimated:YES];
+        
+    } else {
+        Task *task=[self.taskList newTask];
+        self.taskEditViewController.task=task;   
+        [self.addTaskPopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    
+    
+}
+
+- (void) clear:(id)sender
+{
+    NSLog(@"TasksViewController clear: %@\n",sender);
+    
+    if ([self.addTaskPopoverController isPopoverVisible]) {
+        [self.addTaskPopoverController dismissPopoverAnimated:YES];
+        
+    }
+    
+    if ([self.clearTasksPopoverController isPopoverVisible]) {
+        [self.clearTasksPopoverController dismissPopoverAnimated:YES];
+        
+    } else {
+        [self.clearTasksPopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+    }
+}
+
+
+- (void) clearTasks:(BOOL)actionFlag
+{
+    NSLog(@"TasksViewController clearTasks: %i\n",actionFlag);
+    if(actionFlag) {
+        [self.taskList clearCompletedTasks];
+        [self.tableView reloadData];
+    }
+    [self.clearTasksPopoverController dismissPopoverAnimated:YES];
+}
+
+- (void) saveComplete:(Task *)task
+{
+    NSLog(@"TasksViewController saveComplete: %@\n",task);
+    [task save];
+     [self.tableView reloadData];
+    [self.addTaskPopoverController dismissPopoverAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,12 +128,12 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.detailItem name];
+    return [self.taskList name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.detailItem tasks] count];
+    return [[self.taskList tasks] count];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,7 +169,9 @@
      cell.textLabel.text = @"text";
      */
     //change the button color to done or not done depend on wheher the task is completed
-    [cell initialize:[[self.detailItem tasks] objectAtIndex:indexPath.row]];
+    
+    Task *task=[[self.taskList tasks] objectAtIndex:indexPath.row];
+    [cell initialize:task.completed text:task.name];
     return cell;
 }
 
@@ -132,11 +181,12 @@
 { 
     
     TaskCell *cell=(TaskCell *)[[sender superview] superview];
-    [cell toggle];
+    BOOL isSelected=[cell toggle];
     NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];
-    // NSLog(@"row=%i\n",indexPath.row);
-    [[[self.detailItem tasks] objectAtIndex:indexPath.row] save];
-    //change the button color to done
+     NSLog(@"row=%i\n",indexPath.row);
+    Task *task=[[self.taskList tasks] objectAtIndex:indexPath.row];
+    task.completed=isSelected;
+    [task save];
     
     /*
      Use the code below to find the indexpath given a click
@@ -211,7 +261,7 @@
     [items insertObject:barButtonItem atIndex:0];
     [self.toolbar setItems:items animated:YES];
     [items release];
-    self.popoverController = pc;
+    //self.popoverController = pc;
 }
 
 // Called when the view is shown again in the split view, invalidating the button and popover controller.
@@ -221,11 +271,20 @@
     [items removeObjectAtIndex:0];
     [self.toolbar setItems:items animated:YES];
     [items release];
-    self.popoverController = nil;
+    //self.popoverController = nil;
 }
 
 - (void)viewDidLoad
 {
+    self.clearTasksPopoverController = [[UIPopoverController alloc] 
+                              initWithContentViewController:self.clearTasksViewController];
+    self.clearTasksPopoverController.popoverContentSize = CGSizeMake(500, 150);
+    
+    self.addTaskPopoverController = [[UIPopoverController alloc] 
+                                        initWithContentViewController:self.taskEditViewController];
+    self.addTaskPopoverController.popoverContentSize = CGSizeMake(400, 300);
+    
+    
     [super viewDidLoad];
 }
 
@@ -235,7 +294,7 @@
     
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	self.popoverController = nil;
+	self.clearTasksPopoverController = nil;
 }
 
 #pragma mark - Memory management
@@ -250,9 +309,12 @@
 
 - (void)dealloc
 {
-    [_myPopoverController release];
+    [_clearTasksPopoverController release];
+    [_clearTasksViewController release];
+    [_addTaskPopoverController release];
+    [_taskEditViewController release];
     [_toolbar release];
-    [_detailItem release];
+    [_taskList release];
     [_tableView release];
     [_taskCell release];
     [super dealloc];

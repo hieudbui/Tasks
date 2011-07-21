@@ -226,8 +226,8 @@ prin//
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         //gotta remove the tasklist first
         TaskList *toBeRemovedTaskList=[self getTaskList:indexPath];
-        if(self.tasksViewController.detailItem==toBeRemovedTaskList) {
-            self.tasksViewController.detailItem=nil;
+        if(self.tasksViewController.taskList==toBeRemovedTaskList) {
+            self.tasksViewController.taskList=nil;
         }
         [[self getAccount:indexPath] removeTaskList:toBeRemovedTaskList];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
@@ -258,7 +258,7 @@ prin//
      */
     if(self.tableView.editing==NO) {
         [self.detailViewController setViewController:self.tasksViewController];
-        self.tasksViewController.detailItem=[self getTaskList:indexPath];
+        self.tasksViewController.taskList=[self getTaskList:indexPath];
     }
     else {
         [self.detailViewController setViewController:self.taskListEditViewController];

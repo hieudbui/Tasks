@@ -7,7 +7,6 @@
 //
 
 #import "TaskCell.h"
-#import "Task.h"
 
 
 @implementation TaskCell
@@ -44,10 +43,10 @@
 }
 
 
-- (void)initialize:(Task *)task
+- (void)initialize:(BOOL)selectedState text:(NSString *)text
 {
-    _label.text=[task name]; 
-    if(task.completed) {
+    _label.text=text; 
+    if(selectedState) {
         [self selectButton];
     }
     else {
@@ -56,13 +55,14 @@
 }
 
 
-- (void)toggle
+- (BOOL)toggle
 {
     if ([_button isSelected]) {
         [self unselectButton];
     }else {
         [self selectButton];
     }
+    return [_button isSelected];
 }
     
 - (void)dealloc

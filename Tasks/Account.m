@@ -39,7 +39,7 @@
 
 -(NSArray *)taskLists
 {
-    return [_taskStorage getAllTaskListsForAccount:self];
+    return [_taskStorage getTaskListsForAccount:self];
 }
 
 -(void)removeTaskList:(TaskList *)taskList

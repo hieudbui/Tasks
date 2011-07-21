@@ -17,7 +17,6 @@
 @synthesize taskListId=_taskListId;
 @synthesize name=_name;
 @synthesize account=_account;
-@synthesize tasks=_tasks;
 @synthesize new=_new;
 @synthesize taskStorage=_taskStorage;
 
@@ -27,20 +26,9 @@
     self=[super init];
     if(self) {
         self.new=YES;
+        _completedTasks=[[NSMutableArray arrayWithObjects:nil] retain];
     }
     return self;
-}
-
-
--(void) addTask:(Task *)task
-{
-    if(_tasks == nil) {
-        NSLog(@"tasks is nil. initialize to empty");
-        self.tasks=[NSMutableArray arrayWithObjects:nil]; 
-    }
-    task.taskList=self;
-    [(NSMutableArray *)_tasks addObject:task];
-    
 }
 
 -(void) save
@@ -49,18 +37,47 @@
     self.new=NO;
 }
 
+-(Task *)newTask
+{
+    Task *task=[[[Task alloc] init] autorelease];
+    task.taskId=[[NSProcessInfo processInfo] globallyUniqueString];
+    task.taskList=self;
+    task.taskStorage=self.taskStorage;
+    return task;
+}
+
+-(NSArray *)tasks
+{
+    return [self.taskStorage getTasksForTaskList:self];
+}
+
+-(void) clearCompletedTasks
+{
+    for(Task *task in self.tasks) {
+        if(task.completed) {
+            [_completedTasks addObject:task];
+        }
+    }
+    
+    for(Task *task in _completedTasks) {
+        [((NSMutableArray *) self.tasks) removeObject:task];
+    }
+    
+    NSLog(@"TaskList clearCompetedTasks: %@ tasks: %@\n",_completedTasks,self.tasks);
+}
+
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"taskListId: %@ name: new: %i", _taskListId, _name, _new];
+    return [NSString stringWithFormat:@"taskListId: %@ name: %@ new: %i", _taskListId, _name, _new];
 }
 
 
 -(void) dealloc
 {
     [_taskListId release];
+    [_completedTasks release];
     [_account release];
     [_name release];
-    [_tasks release];
     [_taskStorage release];
     [super dealloc];
 }

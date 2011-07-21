@@ -53,7 +53,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{61, 11}, {687, 21}}</string>
 								<reference key="NSSuperview" ref="965624550"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -205,6 +204,7 @@
 						<int key="objectID">5</int>
 						<reference key="object" ref="37681250"/>
 						<reference key="parent" ref="937840519"/>
+						<string key="objectName">Button</string>
 					</object>
 				</object>
 			</object>

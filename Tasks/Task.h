@@ -15,11 +15,13 @@
     
 }
 
+@property(nonatomic,retain) NSString *taskId;
 @property(nonatomic,retain) NSString *name;
 @property(nonatomic,retain) NSString *note;
 @property(nonatomic,retain) NSDate *dueDate;
 @property(nonatomic,retain) TaskList *taskList;
-@property(nonatomic) bool completed;
+@property(nonatomic) BOOL completed;
+@property (nonatomic) BOOL new;
 @property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
 
 -(void)save;

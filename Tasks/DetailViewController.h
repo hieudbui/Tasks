@@ -10,7 +10,8 @@
 
 @class TaskCell;
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
+@interface DetailViewController : UIViewController 
+<UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     UIViewController *_viewController;
 }
 - (IBAction) setViewController:(UIViewController *)viewController;

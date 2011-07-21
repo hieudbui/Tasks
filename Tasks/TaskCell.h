@@ -15,6 +15,6 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *label;
 @property (nonatomic, retain) IBOutlet UIButton *button;
-- (void) initialize:(Task *)task;
-- (void) toggle;
+- (void)initialize:(BOOL)selectedState text:(NSString *)text;
+- (BOOL) toggle;
 @end
