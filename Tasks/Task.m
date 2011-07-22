@@ -92,8 +92,8 @@
     self.dueDate=[decoder decodeObjectForKey:kDueDate];
     self.new=[decoder decodeBoolForKey:kNew];
     self.completed=[decoder decodeBoolForKey:kCompleted];
-    _created=[decoder decodeObjectForKey:kCreated];
-    _changed=[decoder decodeObjectForKey:kChanged];
+    _created=[[decoder decodeObjectForKey:kCreated] retain];
+    _changed=[[decoder decodeObjectForKey:kChanged] retain];
     return self;
 }
 

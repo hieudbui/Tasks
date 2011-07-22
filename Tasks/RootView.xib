@@ -166,10 +166,10 @@
 			<object class="IBUICustomObject" id="1006859058">
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUICustomObject" id="458217309">
+			<object class="IBUICustomObject" id="981986555">
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUICustomObject" id="100291350">
+			<object class="IBUICustomObject" id="841831882">
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 		</object>
@@ -250,19 +250,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">taskStorage</string>
+						<string key="label">taskListStorage</string>
 						<reference key="source" ref="1006859058"/>
-						<reference key="destination" ref="458217309"/>
+						<reference key="destination" ref="841831882"/>
 					</object>
-					<int key="connectionID">42</int>
+					<int key="connectionID">44</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">taskListStorage</string>
+						<string key="label">taskStorage</string>
 						<reference key="source" ref="1006859058"/>
-						<reference key="destination" ref="100291350"/>
+						<reference key="destination" ref="841831882"/>
 					</object>
-					<int key="connectionID">44</int>
+					<int key="connectionID">46</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -346,13 +346,15 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">39</int>
-						<reference key="object" ref="458217309"/>
+						<reference key="object" ref="981986555"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">In Memory Task &amp; TaskList Storage</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">43</int>
-						<reference key="object" ref="100291350"/>
+						<reference key="object" ref="841831882"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">On Disk TaskList &amp; Task Storage</string>
 					</object>
 				</object>
 			</object>
@@ -413,7 +415,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">44</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

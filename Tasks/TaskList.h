@@ -23,6 +23,7 @@
 -(void) clearCompletedTasks;
 -(Task *)newTask;
 -(NSArray *)tasks;
+-(void)removeTask:(Task *)task;
 
 @property(nonatomic,retain) NSString *taskListId;
 @property(nonatomic,retain) NSString *name;

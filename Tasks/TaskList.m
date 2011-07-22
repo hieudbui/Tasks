@@ -54,7 +54,13 @@
 
 -(NSArray *)tasks
 {
-    return [self.taskStorage getTasksForTaskList:self];
+    return [self.taskStorage tasksForTaskList:self];
+}
+
+-(void) removeTask:(Task *)task
+{
+    NSLog(@"removeTask: %@ for taskList: %@\n",task, self);
+    [_taskStorage removeTask:task forTaskList:self];    
 }
 
 -(void) clearCompletedTasks
@@ -115,6 +121,7 @@
     self.new=[decoder decodeBoolForKey:kNew];
     _created=[[decoder decodeObjectForKey:kCreated] retain];
     _changed=[[decoder decodeObjectForKey:kChanged] retain];
+    _completedTasks=[[NSMutableArray arrayWithObjects:nil] retain];
     return self;
 }
 

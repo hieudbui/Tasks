@@ -29,7 +29,7 @@
     return self;
 }
 
-- (NSArray *)getTasksForTaskList:(TaskList *)taskList
+- (NSArray *)tasksForTaskList:(TaskList *)taskList
 {
     NSMutableArray *tasks= [self.taskListToTasks valueForKey:taskList.taskListId];
     if(tasks==nil) {
@@ -81,8 +81,15 @@
 {
     NSLog(@"InMemoryTaskStorage Save task: %@",task);
     if(task.new) {
-        [((NSMutableArray *)[self getTasksForTaskList:taskList]) addObject:task];
+        [((NSMutableArray *)[self tasksForTaskList:taskList]) addObject:task];
     }
+}
+
+- (void) removeTask:(Task *)task forTaskList:(TaskList *)taskList
+{
+    NSLog(@"InMemoryTaskStorage removeTask: %@ forTaskList: %@\n",task,taskList);  
+    NSMutableArray *tasks=(NSMutableArray *)[self tasksForTaskList:taskList];
+    [tasks removeObject:task];
 }
 
 - (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account

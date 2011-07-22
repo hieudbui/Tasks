@@ -13,7 +13,8 @@
 @class TaskList;
 
 @protocol TaskStorage <NSObject> 
-- (NSArray *)getTasksForTaskList:(TaskList *)taskList;
+- (NSArray *)tasksForTaskList:(TaskList *)taskList;
 - (void) saveTask:(Task *)task forTaskList:(TaskList *)taskList;
+- (void) removeTask:(Task *)task forTaskList:(TaskList *)taskList;
 
 @end
