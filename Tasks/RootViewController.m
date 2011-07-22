@@ -34,7 +34,7 @@
     
     self.accounts=[NSMutableArray arrayWithObjects: 
                [NSMutableArray arrayWithObjects:allAccount, nil], 
-               [self.accountStorage getAccounts],
+               [self.accountStorage accounts],
                    nil,
                nil];
     

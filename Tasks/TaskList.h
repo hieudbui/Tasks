@@ -11,6 +11,7 @@
 @class Account;
 @class Task;
 @protocol TaskStorage;
+@protocol TaskListStorage;
 
 @interface TaskList : NSObject {
     NSMutableArray *_completedTasks;
@@ -26,5 +27,5 @@
 @property(nonatomic,retain) Account *account;
 @property (nonatomic) BOOL new;
 @property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
-
+@property(nonatomic,retain) NSObject<TaskListStorage> *taskListStorage;
 @end

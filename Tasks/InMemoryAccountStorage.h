@@ -14,4 +14,8 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *accounts;
+
+- (Account *) localAccount;
+- (Account *) googleAccount;
+
 @end

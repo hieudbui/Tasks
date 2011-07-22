@@ -14,9 +14,7 @@
 @protocol AccountStorage <NSObject>
 - (void)saveAccount:(Account *)account;
 - (void)removeAccount:(Account *)account;
-- (NSArray *)getAccounts;
+- (NSArray *)accounts;
 - (Account *)newAccount;
-- (Account *) localAccount;
-- (Account *) googleAccount;
 - (Account *) allAccount;
 @end

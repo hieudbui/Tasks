@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "TaskStorage.h"
+#import "TaskListStorage.h"
 
-@interface NetworkTaskStorage : NSObject<TaskStorage> {
+@interface NetworkTaskStorage : NSObject<TaskStorage, TaskListStorage> {
     
 }
 

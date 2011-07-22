@@ -152,7 +152,6 @@
 		737165A713D5DB3500FD5EE0 /* TaskListStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListStorage.h; sourceTree = "<group>"; };
 		737165AB13D5FBF300FD5EE0 /* UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDString.h; sourceTree = "<group>"; };
 		737165AC13D5FBF300FD5EE0 /* UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDString.m; sourceTree = "<group>"; };
-		73A9B28413D6097C006F0641 /* EditListComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditListComplete.h; sourceTree = "<group>"; };
 		73A9B28713D717CB006F0641 /* TaskEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditViewController.h; sourceTree = "<group>"; };
 		73A9B28813D717CC006F0641 /* TaskEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskEditViewController.m; sourceTree = "<group>"; };
 		73A9B28913D717CC006F0641 /* TaskEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskEditViewController.xib; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		73A9B28E13D89174006F0641 /* ClearTasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClearTasksViewController.xib; sourceTree = "<group>"; };
 		73A9B29113D894C4006F0641 /* ClearTasksDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearTasksDelegate.h; sourceTree = "<group>"; };
 		73A9B29213D8B6A4006F0641 /* TaskEditComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditComplete.h; sourceTree = "<group>"; };
+		73A9B29313D9BD83006F0641 /* EditTaskListComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskListComplete.h; sourceTree = "<group>"; };
 		73B7FDB613B8F5A10001E053 /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
 		73B7FDB713B8F5A10001E053 /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
 		73B7FDBE13B8FA5B0001E053 /* TaskListsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListsViewController.xib; path = Tasks.xcodeproj/TaskListsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -342,7 +342,7 @@
 				7320FC1013D0D9F5003BC20F /* AccountEditViewController.m */,
 				7320FC1113D0D9F6003BC20F /* AccountEditViewController.xib */,
 				7320FC1413D4B8B4003BC20F /* EditAccountComplete.h */,
-				73A9B28413D6097C006F0641 /* EditListComplete.h */,
+				73A9B29313D9BD83006F0641 /* EditTaskListComplete.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

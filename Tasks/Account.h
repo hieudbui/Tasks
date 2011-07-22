@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TaskListStorage;
 @protocol TaskStorage;
 @protocol AccountStorage;
 @class TaskList;
@@ -28,7 +29,9 @@ typedef enum {
 @property(nonatomic,retain) NSString *name;
 @property (nonatomic) BOOL new;
 
+@property(nonatomic,retain) NSObject<TaskListStorage> *taskListStorage;
 @property(nonatomic,retain) NSObject<TaskStorage> *taskStorage;
+
 @property(nonatomic,retain) NSObject<AccountStorage> *accountStorage;
 
 

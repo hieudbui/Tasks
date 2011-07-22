@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "TaskStorage.h"
+#import "TaskListStorage.h"
 
-
-@interface InMemoryTaskStorage : NSObject<TaskStorage> {
+@interface InMemoryTaskStorage : NSObject<TaskStorage, TaskListStorage> {
 }
 
 @property (nonatomic, retain) NSDictionary *accountToTaskLists;

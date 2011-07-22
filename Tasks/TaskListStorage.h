@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class TaskList;
+@class Account;
 
-@protocol TaskStorage <NSObject>    
-}
+@protocol TaskListStorage <NSObject>
+
+- (NSArray *)getTaskListsForAccount:(Account *)account;
+- (void) removeTaskList:(TaskList *)taskList forAccount:(Account *)account;
+- (void) addTaskList:(TaskList *)taskList forAccount:(Account *)account;
+- (void) saveTaskList:(TaskList *)taskList forAccount:(Account *)account;
 
 @end

@@ -35,6 +35,11 @@
     }
 }
 
+- (void) configureView
+{
+    
+}
+
 - (void) loadView
 {
     if(_viewController!=nil) {

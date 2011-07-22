@@ -8,7 +8,7 @@
 
 #import "TaskListEditViewController.h"
 #import "TaskList.h"
-#import "EditListComplete.h"
+#import "EditTaskListComplete.h"
 
 @implementation TaskListEditViewController
 

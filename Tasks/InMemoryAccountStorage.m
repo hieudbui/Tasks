@@ -9,7 +9,6 @@
 #import "InMemoryAccountStorage.h"
 #import "Account.h"
 #import "InMemoryTaskStorage.h"
-#import "NetworkTaskStorage.h"
 
 @implementation InMemoryAccountStorage
 
@@ -26,73 +25,69 @@
     return self;
 }
 
--(NSArray *) getAccounts
+-(NSArray *) accounts
 {
-    return self.accounts;
+    return _accounts;
 }
 
 -(void) removeAccount:(Account *)account
 {
-    [_accounts removeObject:account];
+    [self.accounts removeObject:account];
 }
 
 -(Account *)newAccount
 {
     Account *account=[[[Account alloc] init] autorelease];
+    account.accountId=[[NSProcessInfo processInfo] globallyUniqueString];
     account.accountStorage=self;
-    account.taskStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
+    id memoryStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
+    account.taskStorage=memoryStorage;
+    account.taskListStorage=memoryStorage;
     return account;
 }
 
 -(void)saveAccount:(Account *)account 
 {
-    NSLog(@"Save account: %@\n", account);
+    NSLog(@"InMemoryAccountStorage save account: %@\n", account);
     if(account.new) {
-        [_accounts addObject:account]; 
+        [self.accounts addObject:account]; 
     }
-    NSLog(@"AccountStorage accounts:%@\n",_accounts);
+    NSLog(@"AccountStorage accounts:%@\n",self.accounts);
 }
 
 
 - (Account *) localAccount
 {
-    Account *account=[[Account alloc] init];
-    account.accountId=[[NSProcessInfo processInfo] globallyUniqueString];
+    Account *account=[self newAccount];
     account.type=Local;
     account.userName=@"local2";
     account.password=@"local2";
     account.name=@"local";
     account.new=NO;
-    account.accountStorage=self;
-    account.taskStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
-    return [account autorelease];
+    return account;
 }
 
 - (Account *) allAccount
 {
-    Account *account=[[Account alloc] init];
+    Account *account=[self newAccount];
     account.type=All;
     account.userName=@"all";
     account.password=@"all";
     account.name=@"all";
     account.new=NO;
-    account.accountStorage=self;
-    return [account autorelease];
+    return account;
 }
 
 
 - (Account *) googleAccount
 {
-    Account *account=[[Account alloc] init];
-    account.accountId=[[NSProcessInfo processInfo] globallyUniqueString];
+    Account *account=[self newAccount];
     account.type=Google;
     account.userName=@"hieu.bui";
     account.password=@"tobefilledinlater";
     account.name=@"hieu.bui@gmail.com";
     account.new=NO;
-    account.accountStorage=self;
-    account.taskStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
-    return [account autorelease];    
+    return account;
 }
 
 -(void) dealloc

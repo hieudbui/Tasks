@@ -10,6 +10,7 @@
 #import "Account.h"
 #import "Task.h"
 #import "TaskStorage.h"
+#import "TaskListStorage.h"
 
 
 @implementation TaskList
@@ -19,6 +20,7 @@
 @synthesize account=_account;
 @synthesize new=_new;
 @synthesize taskStorage=_taskStorage;
+@synthesize taskListStorage=_taskListStorage;
 
 
 -(TaskList *) init
@@ -33,7 +35,7 @@
 
 -(void) save
 {
-    [self.taskStorage saveTaskList:self forAccount:self.account];
+    [self.taskListStorage saveTaskList:self forAccount:self.account];
     self.new=NO;
 }
 
@@ -79,6 +81,7 @@
     [_account release];
     [_name release];
     [_taskStorage release];
+    [_taskListStorage release];
     [super dealloc];
 }
 @end

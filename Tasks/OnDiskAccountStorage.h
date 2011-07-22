@@ -7,17 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AccountStorage.h"
+#import "InMemoryAccountStorage.h"
 #import "SBJson.h"
 
 @class SBJsonStreamParser;
 @class SBJsonStreamParserAdapter;
 
-@interface OnDiskAccountStorage : NSObject<AccountStorage,SBJsonStreamParserAdapterDelegate> {
+@interface OnDiskAccountStorage : InMemoryAccountStorage<SBJsonStreamParserAdapterDelegate> {
     
     SBJsonStreamParser *_parser;
     SBJsonStreamParserAdapter *_adapter;
 }
 
-@property (nonatomic, retain) NSMutableArray *accounts;
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "Account.h"
-#import "InMemoryTaskStorage.h"
-#import "NetworkTaskStorage.h"
+#import "TaskListStorage.h"
+#import "TaskStorage.h"
 #import "AccountStorage.h"
 #import "TaskList.h"
 
@@ -20,6 +20,7 @@
 @synthesize password=_password;
 @synthesize name=_name;
 @synthesize taskStorage=_taskStorage;
+@synthesize taskListStorage=_taskListStorage;
 @synthesize accountStorage=_accountStorage;
 @synthesize new=_new;
 
@@ -39,19 +40,19 @@
 
 -(NSArray *)taskLists
 {
-    return [_taskStorage getTaskListsForAccount:self];
+    return [_taskListStorage getTaskListsForAccount:self];
 }
 
 -(void)removeTaskList:(TaskList *)taskList
 {
     NSLog(@"remove taskList: %@\n",taskList);
-    [_taskStorage removeTaskList:taskList forAccount:self];
+    [_taskListStorage removeTaskList:taskList forAccount:self];
 }
 
 -(void)addTaskList:(TaskList *)taskList
 {
     NSLog(@"Account addTaskList: %@\n",taskList);
-    [_taskStorage addTaskList:taskList forAccount:self];
+    [_taskListStorage addTaskList:taskList forAccount:self];
 }
 
 -(void)save
@@ -66,6 +67,7 @@
     taskList.taskListId=[[NSProcessInfo processInfo] globallyUniqueString];
     taskList.account=self;
     taskList.taskStorage=self.taskStorage;
+    taskList.taskListStorage=self.taskListStorage;
     return taskList;
 }
 
@@ -76,6 +78,7 @@
     [_password release];
     [_name release];
     [_taskStorage release];
+    [_taskListStorage release];
     [_accountStorage release];
     [super dealloc];
 }
