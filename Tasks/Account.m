@@ -35,7 +35,7 @@
 }
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"accountId: %@ name: %@ userName: %@ password: %@ type: %d new: %i", _accountId, _name, _userName, _password,_type, _new];
+    return [NSString stringWithFormat:@"accountId: %@ name: %@ userName: %@ password: %@ type: %d new: %i created: %@ changed: %@", _accountId, _name, _userName, _password,_type, _new, _created, _changed];
 }
 
 -(NSArray *)taskLists
@@ -57,6 +57,10 @@
 
 -(void)save
 {
+    if(self.new) {
+        _created=[[NSDate date] retain];
+    }
+    _changed=[[NSDate date] retain];
     [self.accountStorage saveAccount:self];
     self.new=NO;
 }
@@ -80,6 +84,8 @@
     [_taskStorage release];
     [_taskListStorage release];
     [_accountStorage release];
+    [_changed release];
+    [_created release];
     [super dealloc];
 }
 

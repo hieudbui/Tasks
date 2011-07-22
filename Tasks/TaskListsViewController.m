@@ -234,7 +234,8 @@
                               withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert) {
-        //display the option to create the new task list
+        [self.detailViewController setViewController:self.taskListEditViewController];
+        self.taskListEditViewController.taskList=[[self getAccount:indexPath] newTaskList];
     }
 }
 

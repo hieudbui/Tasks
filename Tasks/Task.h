@@ -12,7 +12,8 @@
 @protocol TaskStorage;
 
 @interface Task : NSObject {
-    
+    NSDate *_created;
+    NSDate *_changed;
 }
 
 @property(nonatomic,retain) NSString *taskId;

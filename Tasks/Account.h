@@ -20,6 +20,8 @@ typedef enum {
 } AccountType;
 
 @interface Account : NSObject {
+    NSDate *_created;
+    NSDate *_changed;
 }
 
 @property AccountType type;

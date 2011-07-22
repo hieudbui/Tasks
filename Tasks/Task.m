@@ -34,12 +34,16 @@
 
 -(NSString *) description {
     return [NSString stringWithFormat:
-            @"id: %@, name: %@ note: %@ dueDate: %@ completed: %i new: %i taskList: %@\n",
-            _taskId, _name, _note,_dueDate,_completed,_new, _taskList];
+            @"id: %@, name: %@ note: %@ dueDate: %@ completed: %i new: %i created: %@ changed: %@ taskList: %@\n",
+            _taskId, _name, _note,_dueDate,_completed,_new, _created, _changed, _taskList];
 }
 
 -(void)save
 {
+    if(self.new) {
+        _created=[[NSDate date] retain];
+    }
+    _changed=[[NSDate date] retain];
     [self.taskStorage saveTask:self forTaskList:self.taskList];
     self.new=NO;
 }
@@ -52,6 +56,8 @@
     [_dueDate release];
     [_taskList release];
     [_taskStorage release];
+    [_changed release];
+    [_created release];
     [super dealloc];
 }
 @end

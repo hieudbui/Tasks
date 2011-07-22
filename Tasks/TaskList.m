@@ -35,6 +35,10 @@
 
 -(void) save
 {
+    if(self.new) {
+        _created=[[NSDate date] retain];
+    }
+    _changed=[[NSDate date] retain];
     [self.taskListStorage saveTaskList:self forAccount:self.account];
     self.new=NO;
 }
@@ -70,7 +74,7 @@
 
 
 -(NSString *) description {
-    return [NSString stringWithFormat:@"taskListId: %@ name: %@ new: %i", _taskListId, _name, _new];
+    return [NSString stringWithFormat:@"taskListId: %@ name: %@ new: %i created: %@ changed: %@", _taskListId, _name, _new, _created, _changed];
 }
 
 
@@ -82,6 +86,8 @@
     [_name release];
     [_taskStorage release];
     [_taskListStorage release];
+    [_changed release];
+    [_created release];
     [super dealloc];
 }
 @end
