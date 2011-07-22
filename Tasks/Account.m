@@ -89,4 +89,33 @@
     [super dealloc];
 }
 
+#pragma mark NSCoding
+
+#define kAccountId   @"accountId"
+#define kUserName    @"userName"
+#define kAccountType @"accountType"
+#define kPassword    @"password"
+#define kName        @"name"
+#define kNew         @"new"
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    
+    [encoder encodeObject:self.name forKey:kAccountId];
+    [encoder encodeObject:self.userName forKey:kUserName];
+    [encoder encodeInt:self.type forKey:kAccountType];
+    [encoder encodeObject:self.password forKey:kPassword];
+    [encoder encodeObject:self.name forKey:kName];
+    [encoder encodeBool:self.new forKey:kNew];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self.accountId=[decoder decodeObjectForKey:kAccountId];
+    self.userName=[decoder decodeObjectForKey:kUserName];
+    self.type=[decoder decodeIntForKey:kAccountType];
+    self.password=[decoder decodeObjectForKey:kPassword];
+    self.name=[decoder decodeObjectForKey:kName];
+    self.new=[decoder decodeBoolForKey:kNew];
+    return self;
+}
+
 @end

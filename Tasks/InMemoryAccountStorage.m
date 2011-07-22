@@ -13,20 +13,31 @@
 @implementation InMemoryAccountStorage
 
 @synthesize accounts=_accounts;
+@synthesize taskStorage=_taskStorage;
+@synthesize taskListStorage=_taskListStorage;
 
 - (InMemoryAccountStorage *) init
 {
     self=[super init];
     if(self) {
-        Account *localAccount=[self localAccount];
-        Account *googleAccount=[self googleAccount];
-        self.accounts=[[[NSMutableArray alloc] initWithObjects:localAccount, googleAccount, nil] autorelease];
     }
     return self;
 }
 
+-(void) initializeStorage:(Account *)account
+{
+    account.accountStorage=self;
+    account.taskStorage=self.taskStorage;
+    account.taskListStorage=self.taskListStorage;    
+}
+
 -(NSArray *) accounts
 {
+    if(_accounts==nil) {
+        Account *localAccount=[self localAccount];
+        Account *googleAccount=[self googleAccount];
+        self.accounts=[[[NSMutableArray alloc] initWithObjects:localAccount, googleAccount, nil] autorelease];
+    }
     return _accounts;
 }
 
@@ -39,10 +50,7 @@
 {
     Account *account=[[[Account alloc] init] autorelease];
     account.accountId=[[NSProcessInfo processInfo] globallyUniqueString];
-    account.accountStorage=self;
-    id memoryStorage=[[[InMemoryTaskStorage alloc] init] autorelease];
-    account.taskStorage=memoryStorage;
-    account.taskListStorage=memoryStorage;
+    [self initializeStorage:account];
     return account;
 }
 
@@ -93,6 +101,8 @@
 -(void) dealloc
 {
     [_accounts release];
+    [_taskStorage release];
+    [_taskListStorage release];
     [super dealloc];
 }
 

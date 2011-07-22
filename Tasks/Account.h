@@ -19,7 +19,7 @@ typedef enum {
     All=3
 } AccountType;
 
-@interface Account : NSObject {
+@interface Account : NSObject<NSCoding> {
     NSDate *_created;
     NSDate *_changed;
 }

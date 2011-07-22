@@ -19,4 +19,5 @@
     SBJsonStreamParserAdapter *_adapter;
 }
 
+
 @end

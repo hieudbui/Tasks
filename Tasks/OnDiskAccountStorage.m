@@ -8,6 +8,10 @@
 
 #import "OnDiskAccountStorage.h"
 #import "Account.h"
+#import "DiskStorage.h"
+
+#define kDataKey        @"Accounts"
+#define kDataFile       @"account.plist"
 
 @implementation OnDiskAccountStorage
 
@@ -16,32 +20,86 @@
 
 - (NSString *) accountsDataFilePath
 {
-    return [[NSBundle mainBundle] pathForResource:@"accounts" ofType:@"json"];
+    //return [[NSBundle mainBundle] pathForResource:@"accounts" ofType:@"json"];
+    return [[NSBundle mainBundle] pathForResource:@"accounts" ofType:@"plist"];
+
 }
 
 - (OnDiskAccountStorage *) init
 {
-    self=[super init];
     if(self) {
+        //NSString *path=[DiskStorage tasksPath];
+        // NSLog(@"OnDiskAccountStorage path: %@", path);
+        //NSString *dataPath = [path stringByAppendingPathComponent:kDataFile];
+        //NSData *codedData = [[[NSData alloc] initWithContentsOfFile:dataPath] autorelease];
+                
         _adapter = [[SBJsonStreamParserAdapter alloc] init];
         _adapter.delegate = self;
         _parser = [[SBJsonStreamParser alloc] init];
         _parser.delegate = _adapter;
         _parser.supportMultipleDocuments = YES;
         
-        NSString *filePath = [self accountsDataFilePath];
-        NSData *accountsData = [NSData dataWithContentsOfFile:filePath];  
-        SBJsonStreamParserStatus status = [_parser parse:accountsData];
+        //HB
+        //7-22-2011
+        //Read data using JSON
+        //SBJsonStreamParserStatus status = [_parser parse:accountsData];
         
-        if (status == SBJsonStreamParserError) {
-        	NSLog(@"Parser error: %@", _parser.error);
-            
-        } else if (status == SBJsonStreamParserWaitingForData) {
-            NSLog(@"Parser waiting for more data");
-        }
+        //if (status == SBJsonStreamParserError) {
+        //	NSLog(@"Parser error: %@", _parser.error);
+        //} else if (status == SBJsonStreamParserWaitingForData) {
+        //    NSLog(@"Parser waiting for more data");
+        //}
         
     }
     return self;
+}
+
+-(NSArray *) accounts
+{
+    if(_accounts==nil) {
+        NSString *filePath = [self accountsDataFilePath];
+        NSLog(@"ONDiskAccountStorage filePath: %@",filePath);
+        NSData *accountsData = [NSData dataWithContentsOfFile:filePath]; 
+        //HB
+        //7-22-2011
+        //Read data using plist
+        if (accountsData != nil) {
+            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:accountsData];
+            id data = [[unarchiver decodeObjectForKey:kDataKey] retain];  
+            NSLog(@"OnDiskAccountStorage decodedData: %@", data);
+            [unarchiver finishDecoding];
+            [unarchiver release];
+            self.accounts=data;
+            for(Account *account in self.accounts) {
+                [self initializeStorage:account];
+            }
+        }
+    }
+    return _accounts;
+}
+
+- (void) writeToFile
+{
+    NSString *filePath = [self accountsDataFilePath];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];          
+    [archiver encodeObject:self.accounts forKey:kDataKey];
+    [archiver finishEncoding];
+    [data writeToFile:filePath atomically:YES];
+    [archiver release];
+    [data release];    
+}
+
+-(void) removeAccount:(Account *)account
+{
+    [super removeAccount:account];
+    [self writeToFile];
+}
+
+-(void)saveAccount:(Account *)account 
+{
+    [super saveAccount:account];
+    [self writeToFile];
 }
 
 #pragma mark SBJsonStreamParserAdapterDelegate methods

@@ -54,6 +54,8 @@
 		73A9B28B13D717CD006F0641 /* TaskEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A9B28913D717CC006F0641 /* TaskEditViewController.xib */; };
 		73A9B28F13D89175006F0641 /* ClearTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28D13D89174006F0641 /* ClearTasksViewController.m */; };
 		73A9B29013D89175006F0641 /* ClearTasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A9B28E13D89174006F0641 /* ClearTasksViewController.xib */; };
+		73A9B29913D9D408006F0641 /* DiskStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B29813D9D407006F0641 /* DiskStorage.m */; };
+		73A9B29D13D9E051006F0641 /* accounts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A9B29C13D9E051006F0641 /* accounts.plist */; };
 		73B7FDB913B8F5A10001E053 /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7FDB713B8F5A10001E053 /* TasksViewController.m */; };
 		73B7FDBF13B8FA5B0001E053 /* TaskListsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B7FDBE13B8FA5B0001E053 /* TaskListsViewController.xib */; };
 		73B7FDC213BB9E550001E053 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B7FDC013BB9E540001E053 /* checked.png */; };
@@ -161,6 +163,9 @@
 		73A9B29113D894C4006F0641 /* ClearTasksDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearTasksDelegate.h; sourceTree = "<group>"; };
 		73A9B29213D8B6A4006F0641 /* TaskEditComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditComplete.h; sourceTree = "<group>"; };
 		73A9B29313D9BD83006F0641 /* EditTaskListComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskListComplete.h; sourceTree = "<group>"; };
+		73A9B29713D9D406006F0641 /* DiskStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskStorage.h; sourceTree = "<group>"; };
+		73A9B29813D9D407006F0641 /* DiskStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskStorage.m; sourceTree = "<group>"; };
+		73A9B29C13D9E051006F0641 /* accounts.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = accounts.plist; sourceTree = "<group>"; };
 		73B7FDB613B8F5A10001E053 /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
 		73B7FDB713B8F5A10001E053 /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
 		73B7FDBE13B8FA5B0001E053 /* TaskListsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListsViewController.xib; path = Tasks.xcodeproj/TaskListsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -244,6 +249,7 @@
 		730C58AC13AFB85E00D443E6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				73A9B29C13D9E051006F0641 /* accounts.plist */,
 				73B7FDC013BB9E540001E053 /* checked.png */,
 				73B7FDC113BB9E550001E053 /* unchecked.png */,
 				730C58AD13AFB85E00D443E6 /* Tasks-Info.plist */,
@@ -304,6 +310,8 @@
 				73645F1113B2306600222CB1 /* InMemoryTaskStorage.m */,
 				73BE711513CDF838002A0DF8 /* NetworkTaskStorage.h */,
 				73BE711613CDF83B002A0DF8 /* NetworkTaskStorage.m */,
+				73A9B29713D9D406006F0641 /* DiskStorage.h */,
+				73A9B29813D9D407006F0641 /* DiskStorage.m */,
 				730C594313B11A0E00D443E6 /* Domain */,
 			);
 			name = Storage;
@@ -469,6 +477,7 @@
 				737165A313D5D2CF00FD5EE0 /* accounts.json in Resources */,
 				73A9B28B13D717CD006F0641 /* TaskEditViewController.xib in Resources */,
 				73A9B29013D89175006F0641 /* ClearTasksViewController.xib in Resources */,
+				73A9B29D13D9E051006F0641 /* accounts.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +544,7 @@
 				737165AD13D5FBF300FD5EE0 /* UUIDString.m in Sources */,
 				73A9B28A13D717CD006F0641 /* TaskEditViewController.m in Sources */,
 				73A9B28F13D89175006F0641 /* ClearTasksViewController.m in Sources */,
+				73A9B29913D9D408006F0641 /* DiskStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

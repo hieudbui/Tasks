@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AccountStorage.h"
 
+@protocol TaskStorage;
+@protocol TaskListStorage;
 
 @interface InMemoryAccountStorage : NSObject<AccountStorage> {
 }
@@ -17,5 +19,10 @@
 
 - (Account *) localAccount;
 - (Account *) googleAccount;
+- (void) initializeStorage:(Account *)account;
+
+
+@property(nonatomic,retain) IBOutlet NSObject<TaskListStorage> *taskListStorage;
+@property(nonatomic,retain) IBOutlet NSObject<TaskStorage> *taskStorage;
 
 @end
