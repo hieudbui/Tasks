@@ -13,7 +13,7 @@
 @protocol TaskStorage;
 @protocol TaskListStorage;
 
-@interface TaskList : NSObject {
+@interface TaskList : NSObject<NSCoding> {
     NSDate *_created;
     NSDate *_changed;
     NSMutableArray *_completedTasks;

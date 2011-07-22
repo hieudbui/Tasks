@@ -65,11 +65,11 @@
         //Read data using plist
         if (accountsData != nil) {
             NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:accountsData];
-            id data = [[unarchiver decodeObjectForKey:kDataKey] retain];  
+            id data = [unarchiver decodeObjectForKey:kDataKey];  
             NSLog(@"OnDiskAccountStorage decodedData: %@", data);
+            self.accounts=data;
             [unarchiver finishDecoding];
             [unarchiver release];
-            self.accounts=data;
             for(Account *account in self.accounts) {
                 [self initializeStorage:account];
             }

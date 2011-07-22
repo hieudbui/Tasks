@@ -11,7 +11,7 @@
 @class TaskList;
 @protocol TaskStorage;
 
-@interface Task : NSObject {
+@interface Task : NSObject<NSCoding> {
     NSDate *_created;
     NSDate *_changed;
 }

@@ -8,9 +8,6 @@
 
 #import "DiskStorage.h"
 
-
-static NSString *_docPath;
-
 @implementation DiskStorage
 
 #pragma mark Storage
@@ -18,16 +15,13 @@ static NSString *_docPath;
 + (NSString *)tasksPath 
 {
     NSString *documentsDirectory = [DiskStorage privateDir];
-    
-    if (_docPath == nil) {
-        NSError *error;
-        _docPath =[documentsDirectory stringByAppendingPathComponent:@"tasks"];
-        BOOL success=[[NSFileManager defaultManager] createDirectoryAtPath:_docPath withIntermediateDirectories:YES attributes:nil error:&error];
-        if (!success) {
-            NSLog(@"Error creating data path: %@", [error localizedDescription]);
-        }
+    NSError *error;
+    NSString *tasksDirectory=[documentsDirectory stringByAppendingPathComponent:@"tasks"];
+    BOOL success=[[NSFileManager defaultManager] createDirectoryAtPath:tasksDirectory withIntermediateDirectories:YES attributes:nil error:&error];
+    if (!success) {
+        NSLog(@"Error creating data path: %@", [error localizedDescription]);
     }
-    return _docPath;
+    return tasksDirectory;
 }
 
 + (NSString *)privateDir 

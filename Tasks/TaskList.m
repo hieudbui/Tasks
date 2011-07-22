@@ -90,4 +90,32 @@
     [_created release];
     [super dealloc];
 }
+
+#pragma mark NSCoding
+
+#define kTaskListId     @"taskListId"
+#define kName           @"name"
+#define kNew            @"new"
+#define kCreated        @"created"
+#define kChanged        @"changed"
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    
+    [encoder encodeObject:self.taskListId forKey:kTaskListId];
+    [encoder encodeObject:self.name forKey:kName];
+    [encoder encodeBool:self.new forKey:kNew];
+    [encoder encodeObject:_created forKey:kCreated];
+    [encoder encodeObject:_changed forKey:kChanged];
+ 
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self.taskListId=[decoder decodeObjectForKey:kTaskListId];
+    self.name=[decoder decodeObjectForKey:kName];
+    self.new=[decoder decodeBoolForKey:kNew];
+    _created=[[decoder decodeObjectForKey:kCreated] retain];
+    _changed=[[decoder decodeObjectForKey:kChanged] retain];
+    return self;
+}
+
 @end

@@ -97,6 +97,8 @@
 #define kPassword    @"password"
 #define kName        @"name"
 #define kNew         @"new"
+#define kCreated     @"created"
+#define kChanged     @"changed"
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     
@@ -106,6 +108,8 @@
     [encoder encodeObject:self.password forKey:kPassword];
     [encoder encodeObject:self.name forKey:kName];
     [encoder encodeBool:self.new forKey:kNew];
+    [encoder encodeObject:_created forKey:kCreated];
+    [encoder encodeObject:_changed forKey:kChanged];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -115,6 +119,8 @@
     self.password=[decoder decodeObjectForKey:kPassword];
     self.name=[decoder decodeObjectForKey:kName];
     self.new=[decoder decodeBoolForKey:kNew];
+    _created=[[decoder decodeObjectForKey:kCreated] retain];
+    _changed=[[decoder decodeObjectForKey:kChanged] retain];
     return self;
 }
 
