@@ -13,6 +13,7 @@
 #import "TaskCell.h"
 #import "TaskEditViewController.h"
 #import "ClearTasksViewController.h"
+#import "RemoveTaskViewController.h"
 
 @implementation TasksViewController
 
@@ -21,7 +22,10 @@
 @synthesize taskList=_taskList;
 @synthesize clearTasksPopoverController=_clearTasksPopoverController;
 @synthesize clearTasksViewController=_clearTasksViewController;
+@synthesize removeTaskViewController=_removeTaskViewController;
 @synthesize addTaskPopoverController=_addTaskPopoverController;
+@synthesize editTaskPopoverController=_editTaskPopoverController;
+@synthesize removeTaskPopoverController=_removeTaskPopoverController;
 @synthesize taskEditViewController=_taskEditViewController;
 @synthesize taskCell=_taskCell;
 
@@ -48,6 +52,10 @@
         [self.clearTasksPopoverController dismissPopoverAnimated:YES];
     }
     
+    if ([self.editTaskPopoverController isPopoverVisible]) {
+        [self.editTaskPopoverController dismissPopoverAnimated:YES];
+    }
+    
     if ([self.addTaskPopoverController isPopoverVisible]) {
         [self.addTaskPopoverController dismissPopoverAnimated:YES];
         
@@ -69,6 +77,10 @@
         
     }
     
+    if ([self.editTaskPopoverController isPopoverVisible]) {
+        [self.editTaskPopoverController dismissPopoverAnimated:YES];
+    }
+    
     if ([self.clearTasksPopoverController isPopoverVisible]) {
         [self.clearTasksPopoverController dismissPopoverAnimated:YES];
         
@@ -78,6 +90,16 @@
     }
 }
 
+- (void) removeTask:(BOOL)actionFlag
+{
+    NSLog(@"TasksViewController removeTask: %i\n",actionFlag);
+    if(actionFlag) {
+        [self.taskList removeTask:self.removeTaskViewController.task];
+        self.removeTaskViewController.task=nil;
+        [self.tableView reloadData];
+    }
+    [self.removeTaskPopoverController dismissPopoverAnimated:YES];
+}
 
 - (void) clearTasks:(BOOL)actionFlag
 {
@@ -93,8 +115,9 @@
 {
     NSLog(@"TasksViewController saveComplete: %@\n",task);
     [task save];
-     [self.tableView reloadData];
+    [self.tableView reloadData];
     [self.addTaskPopoverController dismissPopoverAnimated:YES];
+    [self.editTaskPopoverController dismissPopoverAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,6 +163,14 @@
     return YES;
 }
 
+
+- (Task *)getTask:(NSIndexPath *)indexPath
+{
+    Task *task=[[self.taskList tasks] objectAtIndex:indexPath.row];
+    return task;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TaskCell";
@@ -170,7 +201,7 @@
      */
     //change the button color to done or not done depend on wheher the task is completed
     
-    Task *task=[[self.taskList tasks] objectAtIndex:indexPath.row];
+    Task *task=[self getTask:indexPath];
     [cell initialize:task.completed text:task.name];
     return cell;
 }
@@ -232,6 +263,7 @@
  }
  */
 
+
 /*
  // Override to support rearranging the table view.
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -250,6 +282,11 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    Task *task=[self getTask:indexPath];
+    self.taskEditViewController.task=task; 
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    self.editTaskPopoverController.popoverContentSize = CGSizeMake(400, 300);
+    [self.editTaskPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Split view support
@@ -285,8 +322,43 @@
     self.addTaskPopoverController.popoverContentSize = CGSizeMake(400, 300);
     
     
+    self.editTaskPopoverController = [[UIPopoverController alloc] 
+                                     initWithContentViewController:self.taskEditViewController];
+    self.editTaskPopoverController.popoverContentSize = CGSizeMake(400, 300);
+    
+    self.removeTaskPopoverController = [[UIPopoverController alloc] 
+                                      initWithContentViewController:self.removeTaskViewController];
+    self.removeTaskPopoverController.popoverContentSize = CGSizeMake(450, 120);
+    
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    [lpgr release];
+    
+    
     [super viewDidLoad];
 }
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Long press Started");
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        if (indexPath !=nil) {
+            Task *task=[self getTask:indexPath];
+            self.removeTaskViewController.task=task; 
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            [self.removeTaskPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+    }
+    
+}
+
 
 - (void)viewDidUnload
 {
@@ -311,7 +383,10 @@
 {
     [_clearTasksPopoverController release];
     [_clearTasksViewController release];
+    [_removeTaskViewController release];
     [_addTaskPopoverController release];
+    [_editTaskPopoverController release];
+    [_removeTaskPopoverController release];
     [_taskEditViewController release];
     [_toolbar release];
     [_taskList release];

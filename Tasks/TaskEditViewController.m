@@ -80,8 +80,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"TaskEditViewController viewDidAppear");
-    self.name.text=nil;
+    self.name.text=self.task.name;
     self.dueDate.text=nil;
+    //self.dueDate.text=self.task.dueDate;
 	[super viewDidAppear:animated];    
 }
 

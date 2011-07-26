@@ -50,6 +50,8 @@
 		737165A113D5CA0300FD5EE0 /* OnDiskAccountStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 737165A013D5CA0300FD5EE0 /* OnDiskAccountStorage.m */; };
 		737165A313D5D2CF00FD5EE0 /* accounts.json in Resources */ = {isa = PBXBuildFile; fileRef = 737165A213D5D2CF00FD5EE0 /* accounts.json */; };
 		737165AD13D5FBF300FD5EE0 /* UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 737165AC13D5FBF300FD5EE0 /* UUIDString.m */; };
+		73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */; };
+		73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */; };
 		73A9B28A13D717CD006F0641 /* TaskEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28813D717CC006F0641 /* TaskEditViewController.m */; };
 		73A9B28B13D717CD006F0641 /* TaskEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A9B28913D717CC006F0641 /* TaskEditViewController.xib */; };
 		73A9B28F13D89175006F0641 /* ClearTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28D13D89174006F0641 /* ClearTasksViewController.m */; };
@@ -154,6 +156,10 @@
 		737165A713D5DB3500FD5EE0 /* TaskListStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListStorage.h; sourceTree = "<group>"; };
 		737165AB13D5FBF300FD5EE0 /* UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDString.h; sourceTree = "<group>"; };
 		737165AC13D5FBF300FD5EE0 /* UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDString.m; sourceTree = "<group>"; };
+		73A0CB1E13DDDA0C0069B407 /* RemoveTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveTaskViewController.h; sourceTree = "<group>"; };
+		73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveTaskViewController.m; sourceTree = "<group>"; };
+		73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoveTaskViewController.xib; sourceTree = "<group>"; };
+		73A0CB2413DDE1C80069B407 /* RemoveTaskDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveTaskDelegate.h; sourceTree = "<group>"; };
 		73A9B28713D717CB006F0641 /* TaskEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditViewController.h; sourceTree = "<group>"; };
 		73A9B28813D717CC006F0641 /* TaskEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskEditViewController.m; sourceTree = "<group>"; };
 		73A9B28913D717CC006F0641 /* TaskEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskEditViewController.xib; sourceTree = "<group>"; };
@@ -337,6 +343,10 @@
 				73A9B28D13D89174006F0641 /* ClearTasksViewController.m */,
 				73A9B28E13D89174006F0641 /* ClearTasksViewController.xib */,
 				73A9B29113D894C4006F0641 /* ClearTasksDelegate.h */,
+				73A0CB1E13DDDA0C0069B407 /* RemoveTaskViewController.h */,
+				73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */,
+				73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */,
+				73A0CB2413DDE1C80069B407 /* RemoveTaskDelegate.h */,
 				73BE710F13C6049B002A0DF8 /* TaskCell.xib */,
 				73BE711213C63231002A0DF8 /* TaskCell.h */,
 				73BE711313C63231002A0DF8 /* TaskCell.m */,
@@ -478,6 +488,7 @@
 				73A9B28B13D717CD006F0641 /* TaskEditViewController.xib in Resources */,
 				73A9B29013D89175006F0641 /* ClearTasksViewController.xib in Resources */,
 				73A9B29D13D9E051006F0641 /* accounts.plist in Resources */,
+				73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +556,7 @@
 				73A9B28F13D89175006F0641 /* ClearTasksViewController.m in Sources */,
 				73A9B29913D9D408006F0641 /* DiskStorage.m in Sources */,
 				73A9B2A013DA0021006F0641 /* OnDiskTaskStorage.m in Sources */,
+				73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
