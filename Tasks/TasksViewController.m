@@ -286,7 +286,13 @@
     self.taskEditViewController.task=task; 
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     self.editTaskPopoverController.popoverContentSize = CGSizeMake(400, 300);
-    [self.editTaskPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    CGRect rect=cell.bounds;
+    //NSLog(@"bounds: %@",NSStringFromCGRect(rect));
+    //NSLog(@"frame: %@",NSStringFromCGRect(cell.frame));
+    //NSLog(@"width/2: %f",rect.size.width/2);
+    rect=CGRectMake(0,0,rect.size.width/2,rect.size.height);
+    [self.editTaskPopoverController presentPopoverFromRect:rect inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 #pragma mark - Split view support

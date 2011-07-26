@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UILabelStrikeThrough.h"
 
 @class Task;
 
 @interface TaskCell : UITableViewCell {
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *label;
+@property (nonatomic, retain) IBOutlet UILabelStrikethrough *label;
 @property (nonatomic, retain) IBOutlet UIButton *button;
 - (void)initialize:(BOOL)selectedState text:(NSString *)text;
 - (BOOL) toggle;

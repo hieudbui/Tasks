@@ -45,9 +45,11 @@
 
 - (void)initialize:(BOOL)selectedState text:(NSString *)text
 {
-    _label.text=text; 
+    self.label.text=text; 
     if(selectedState) {
         [self selectButton];
+        self.label.strikeThrough=YES;
+        
     }
     else {
         [self unselectButton];
@@ -59,9 +61,12 @@
 {
     if ([_button isSelected]) {
         [self unselectButton];
+        self.label.strikeThrough=NO;
     }else {
         [self selectButton];
+        self.label.strikeThrough=YES;
     }
+    [self.label setNeedsDisplay];
     return [_button isSelected];
 }
     
