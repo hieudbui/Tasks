@@ -54,7 +54,6 @@
 								<string key="NSFrame">{{61, 11}, {687, 21}}</string>
 								<reference key="NSSuperview" ref="965624550"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -287,7 +286,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
-							<string>UILabel</string>
+							<string>UILabelStrikethrough</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -305,7 +304,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">label</string>
-								<string key="candidateClassName">UILabel</string>
+								<string key="candidateClassName">UILabelStrikethrough</string>
 							</object>
 						</object>
 					</object>

@@ -15,6 +15,7 @@
     int stroke;
     UIColor* strokeColor;
 }
+
 @property (nonatomic) int xOffset;
 @property (nonatomic) int yOffset;
 @property (nonatomic) int widthOffset;

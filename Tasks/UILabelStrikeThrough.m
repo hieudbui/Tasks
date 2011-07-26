@@ -68,6 +68,7 @@
 - (void)drawRect:(CGRect)rect {
     
     if(self.strikeThrough) {
+        
         NSLog(@"UILabelStrikeThrough text: %@",self.text);
         
         CGSize size = [self.text sizeWithFont:self.font constrainedToSize:self.frame.size];
