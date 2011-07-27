@@ -9,9 +9,11 @@
 #import "RootViewController.h"
 #import "DetailViewController.h"
 #import "TaskListsViewController.h"
+#import "SettingsViewController.h"
 #import "Account.h"
 #import "AccountStorage.h"
 #import "AccountEditViewController.h"
+#import "SettingsCompleteDelegate.h"
 
 @implementation RootViewController
 		
@@ -20,6 +22,7 @@
 @synthesize accounts=_accounts;
 @synthesize taskListsViewController=_taskListsViewController;
 @synthesize accountEditViewController=_accountEditViewController;
+@synthesize settingsViewController=_settingsViewController;
 @synthesize tableView=_tableView;
 @synthesize accountStorage=_accountStorage;
 
@@ -47,6 +50,23 @@
     [editButton release];
     self.title=@"Accounts";
     self.tableView.allowsSelectionDuringEditing=YES;
+}
+
+
+- (void) settingsCompleteViewController:(SettingsViewController *)settingsViewController
+                               settings:(Settings *)settings;
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+-(IBAction)settings
+{
+    self.settingsViewController.modalPresentationStyle=UIModalPresentationFormSheet;
+    [self presentModalViewController:self.settingsViewController animated:YES];   
+}
+
+-(IBAction)sync
+{
+    
 }
 
 - (void) editButtonTapped
@@ -115,6 +135,9 @@
 
 - (Account *) getAccount:(NSIndexPath *)indexPath
 {
+    if(indexPath.row == [[self getAccounts:indexPath.section] count]) {
+        return nil;
+    }
     return [[self getAccounts:indexPath.section] objectAtIndex:indexPath.row];
 }
 
@@ -159,6 +182,11 @@
 {
     if(indexPath.section==0) {
         return NO;
+    }
+    
+    Account *account=[self getAccount:indexPath];
+    if(account!=nil && account.type==Local) {
+            return NO;
     }
     return YES;
 }
@@ -266,6 +294,7 @@
     [_detailViewController release];
     [_taskListsViewController release];
     [_accountEditViewController release];
+    [_settingsViewController release];
     [_bottomToolbar release];
     [_accounts release];
     [_tableView release];

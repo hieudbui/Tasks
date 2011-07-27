@@ -66,6 +66,9 @@
 		73B7FDC313BB9E550001E053 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B7FDC113BB9E550001E053 /* unchecked.png */; };
 		73BE711013C6049B002A0DF8 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BE710F13C6049B002A0DF8 /* TaskCell.xib */; };
 		73BE711413C63231002A0DF8 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BE711313C63231002A0DF8 /* TaskCell.m */; };
+		73D3B04913E05FC000EB9915 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D3B04713E05FBF00EB9915 /* SettingsViewController.m */; };
+		73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D3B04813E05FC000EB9915 /* SettingsViewController.xib */; };
+		73D3B04F13E0638100EB9915 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D3B04E13E0638100EB9915 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +188,12 @@
 		73BE710F13C6049B002A0DF8 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		73BE711213C63231002A0DF8 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		73BE711313C63231002A0DF8 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		73D3B04613E05FBF00EB9915 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		73D3B04713E05FBF00EB9915 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		73D3B04813E05FC000EB9915 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		73D3B04C13E0632600EB9915 /* SettingsCompleteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCompleteDelegate.h; sourceTree = "<group>"; };
+		73D3B04D13E0638100EB9915 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		73D3B04E13E0638100EB9915 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +310,8 @@
 				73645EF613B11C2700222CB1 /* TaskList.m */,
 				73645EF913B11C3300222CB1 /* Task.h */,
 				73645EFA13B11C3300222CB1 /* Task.m */,
+				73D3B04D13E0638100EB9915 /* Settings.h */,
+				73D3B04E13E0638100EB9915 /* Settings.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -366,6 +377,10 @@
 				73A9B29313D9BD83006F0641 /* EditTaskListComplete.h */,
 				7384CF8F13DF64320011A58D /* UILabelStrikeThrough.h */,
 				7384CF9013DF64320011A58D /* UILabelStrikeThrough.m */,
+				73D3B04C13E0632600EB9915 /* SettingsCompleteDelegate.h */,
+				73D3B04613E05FBF00EB9915 /* SettingsViewController.h */,
+				73D3B04713E05FBF00EB9915 /* SettingsViewController.m */,
+				73D3B04813E05FC000EB9915 /* SettingsViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -494,6 +509,7 @@
 				73A9B29013D89175006F0641 /* ClearTasksViewController.xib in Resources */,
 				73A9B29D13D9E051006F0641 /* accounts.plist in Resources */,
 				73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */,
+				73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +579,8 @@
 				73A9B2A013DA0021006F0641 /* OnDiskTaskStorage.m in Sources */,
 				73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */,
 				7384CF9113DF64320011A58D /* UILabelStrikeThrough.m in Sources */,
+				73D3B04913E05FC000EB9915 /* SettingsViewController.m in Sources */,
+				73D3B04F13E0638100EB9915 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
