@@ -53,6 +53,7 @@
     }
     else {
         [self unselectButton];
+        self.label.strikeThrough=NO;
     }
 }
 
