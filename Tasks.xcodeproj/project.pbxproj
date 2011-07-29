@@ -69,6 +69,8 @@
 		73D3B04913E05FC000EB9915 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D3B04713E05FBF00EB9915 /* SettingsViewController.m */; };
 		73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D3B04813E05FC000EB9915 /* SettingsViewController.xib */; };
 		73D3B04F13E0638100EB9915 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D3B04E13E0638100EB9915 /* Settings.m */; };
+		73D3B05313E089D500EB9915 /* SelectADateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D3B05113E089D300EB9915 /* SelectADateViewController.m */; };
+		73D3B05413E089D500EB9915 /* SelectADateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73D3B05213E089D400EB9915 /* SelectADateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +196,9 @@
 		73D3B04C13E0632600EB9915 /* SettingsCompleteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCompleteDelegate.h; sourceTree = "<group>"; };
 		73D3B04D13E0638100EB9915 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		73D3B04E13E0638100EB9915 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		73D3B05013E089D200EB9915 /* SelectADateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectADateViewController.h; sourceTree = "<group>"; };
+		73D3B05113E089D300EB9915 /* SelectADateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectADateViewController.m; sourceTree = "<group>"; };
+		73D3B05213E089D400EB9915 /* SelectADateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectADateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +386,9 @@
 				73D3B04613E05FBF00EB9915 /* SettingsViewController.h */,
 				73D3B04713E05FBF00EB9915 /* SettingsViewController.m */,
 				73D3B04813E05FC000EB9915 /* SettingsViewController.xib */,
+				73D3B05013E089D200EB9915 /* SelectADateViewController.h */,
+				73D3B05113E089D300EB9915 /* SelectADateViewController.m */,
+				73D3B05213E089D400EB9915 /* SelectADateViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -510,6 +518,7 @@
 				73A9B29D13D9E051006F0641 /* accounts.plist in Resources */,
 				73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */,
 				73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */,
+				73D3B05413E089D500EB9915 /* SelectADateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +590,7 @@
 				7384CF9113DF64320011A58D /* UILabelStrikeThrough.m in Sources */,
 				73D3B04913E05FC000EB9915 /* SettingsViewController.m in Sources */,
 				73D3B04F13E0638100EB9915 /* Settings.m in Sources */,
+				73D3B05313E089D500EB9915 /* SelectADateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

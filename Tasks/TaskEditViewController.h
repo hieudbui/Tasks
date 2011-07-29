@@ -10,18 +10,25 @@
 #import "TaskEditComplete.h"
 
 @class Task;
+@class SelectADateViewController;
 
 @interface TaskEditViewController : UIViewController {
     
 }
 
 
+@property (nonatomic, retain) IBOutlet SelectADateViewController *selectADateViewController;
 @property (nonatomic, retain) IBOutlet NSObject<TaskEditComplete> *delegate;
 @property (nonatomic, retain) IBOutlet UITextField *name;
-@property (nonatomic, retain) IBOutlet UITextField *dueDate;
+@property (nonatomic, retain) IBOutlet UIButton *dueDate;
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, retain) Task *task;
 
 
+- (IBAction)selectDate:(id)sender;
+- (IBAction)getDateSelection:(id)sender;
 - (IBAction)save:(id)sender;
+- (IBAction)selectText:(id)sender;
+
 
 @end
