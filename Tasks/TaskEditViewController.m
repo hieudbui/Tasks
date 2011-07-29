@@ -59,6 +59,18 @@
 - (IBAction)selectDate:(id)sender
 {
     NSLog(@"selectDate");
+    if(self.task.dueDate!=nil) {
+        self.datePicker.date=self.task.dueDate;
+    }
+    else {
+        self.task.dueDate=[NSDate date];
+        self.datePicker.date=self.task.dueDate;
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];	
+        [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
+        NSString *dateString = [dateFormat stringFromDate:self.task.dueDate];
+        [self.dueDate setTitle:dateString forState:UIControlStateNormal];
+        [dateFormat release];
+    }
     [self.name resignFirstResponder];
     [self animateDatePicker:164];
     //[self.datePicker setNeedsDisplay];
@@ -159,11 +171,7 @@
     NSString *dateString = [dateFormat stringFromDate:self.task.dueDate];
     
     if(dateString!=nil) {
-        self.datePicker.date=self.task.dueDate;
         [self.dueDate setTitle:dateString forState:UIControlStateNormal];
-    }
-    else {
-        self.datePicker.date=[NSDate date];
     }
     [dateFormat release];
     
