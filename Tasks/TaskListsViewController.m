@@ -257,6 +257,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+     NSLog(@"backgroundColor %@",[self.tableView cellForRowAtIndexPath:indexPath].backgroundColor);
     if(self.tableView.editing==NO) {
         [self.detailViewController setViewController:self.tasksViewController];
         self.tasksViewController.taskList=[self getTaskList:indexPath];

@@ -244,7 +244,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    //detailViewController.detailItem=[[self.accounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
     //TODO
     //additional work to check if it is all index then pass all the accounts
     if(self.tableView.editing==NO) {

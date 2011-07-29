@@ -25,6 +25,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    //	NSLog(@"Set selected: %i for: %@", selected, self);
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state

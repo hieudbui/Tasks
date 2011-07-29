@@ -54,6 +54,7 @@
 								<string key="NSFrame">{{61, 11}, {687, 21}}</string>
 								<reference key="NSSuperview" ref="965624550"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -127,7 +128,6 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
-				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="965624550"/>
 				<string key="IBUIReuseIdentifier">TaskCell</string>
 			</object>

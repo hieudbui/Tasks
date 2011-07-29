@@ -69,7 +69,7 @@
     
     if(self.strikeThrough) {
         
-        NSLog(@"UILabelStrikeThrough text: %@",self.text);
+       // NSLog(@"UILabelStrikeThrough text: %@",self.text);
         
         CGSize size = [self.text sizeWithFont:self.font constrainedToSize:self.frame.size];
         CGContextRef c = UIGraphicsGetCurrentContext();
@@ -78,7 +78,7 @@
         CGContextSetLineWidth(c, self.stroke);
         CGContextSetStrokeColorWithColor(c, currentColor.CGColor);
         int halfWayUp = (size.height - self.bounds.origin.y) / 2 + self.yOffset;
-         NSLog(@"color: %@ stroke: %i halfWayUp: %i", self.strokeColor, self.stroke, halfWayUp);
+         //NSLog(@"color: %@ stroke: %i halfWayUp: %i", self.strokeColor, self.stroke, halfWayUp);
         CGContextMoveToPoint(c, self.bounds.origin.x + self.xOffset, halfWayUp );
         CGContextAddLineToPoint(c, self.bounds.origin.x + size.width + self.widthOffset - self.xOffset, halfWayUp);
         CGContextStrokePath(c);

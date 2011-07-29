@@ -181,10 +181,21 @@
         //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         [[NSBundle mainBundle] loadNibNamed:@"TaskCell" owner:self options:nil];
         cell=_taskCell;
+        
+        /*
+        UILongPressGestureRecognizer *removeTaskAnimationGesture = [[UILongPressGestureRecognizer alloc] 
+                                                                    initWithTarget:self action:@selector(startRemoveTaskAnimation:)];
+        removeTaskAnimationGesture.minimumPressDuration = .25; //seconds
+        removeTaskAnimationGesture.delegate = self;
+        [cell addGestureRecognizer:removeTaskAnimationGesture];
+        [removeTaskAnimationGesture release];
+         */
+        
     }
     else {
         NSLog(@"Cell Identifier found.  Skipping creating one from nib");
     }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     /*
      
      UIImage *image = [UIImage imageNamed:@"unchecked.png"]; 
@@ -339,23 +350,58 @@
     self.removeTaskPopoverController.popoverContentSize = CGSizeMake(450, 120);
     
     
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
-                                          initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1; //seconds
-    lpgr.delegate = self;
-    [self.tableView addGestureRecognizer:lpgr];
-    [lpgr release];
-    
+    UILongPressGestureRecognizer *removetaskGesture = [[UILongPressGestureRecognizer alloc] 
+                                                       initWithTarget:self action:@selector(showRemoveTaskPopOver:)];
+    removetaskGesture.minimumPressDuration = 1; //seconds
+    removetaskGesture.delegate = self;
+    [self.tableView addGestureRecognizer:removetaskGesture];
+    [removetaskGesture release];
     
     [super viewDidLoad];
 }
 
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+
+-(void)startRemoveTaskAnimation:(UILongPressGestureRecognizer *)gestureRecognizer
 {
     CGPoint p = [gestureRecognizer locationInView:self.tableView];
     
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"Long press Started");
+        NSLog(@"start remove task animation");
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        if (indexPath !=nil) {
+            TaskCell *cell = (TaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            Task *task=[self getTask:indexPath];
+            self.removeTaskViewController.task=task;
+        
+           
+            [UIView animateWithDuration:0.75
+                                  delay:0
+                                options: UIViewAnimationCurveEaseOut
+                             animations:^{
+                                    cell.backgroundColor = [UIColor colorWithRed:0 green:0 blue:.8 alpha:1];
+                                    cell.label.textColor=[UIColor whiteColor];
+                                 
+                             } 
+                             completion:^(BOOL finished){
+                                 NSLog(@"Done Animating!");
+                                 
+                                 [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+                                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                                 [self.removeTaskPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                             }];
+             
+             
+        }
+    }
+    
+}
+
+-(void)showRemoveTaskPopOver:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"show remove task popover");
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
         if (indexPath !=nil) {
             Task *task=[self getTask:indexPath];
@@ -364,7 +410,6 @@
             [self.removeTaskPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
     }
-    
 }
 
 
