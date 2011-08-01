@@ -12,7 +12,7 @@
 @class Task;
 @class SelectADateViewController;
 
-@interface TaskEditViewController : UIViewController {
+@interface TaskEditViewController : UIViewController<UITextFieldDelegate> {
     
 }
 
@@ -28,7 +28,5 @@
 - (IBAction)selectDate:(id)sender;
 - (IBAction)getDateSelection:(id)sender;
 - (IBAction)save:(id)sender;
-- (IBAction)selectText:(id)sender;
-
 
 @end

@@ -37,12 +37,12 @@
     [UIView commitAnimations];    
 }
 
--(IBAction)selectText:(id)sender
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"selectText");
+    NSLog(@"textFieldShouldBeginEditing");
     [self animateDatePicker:self.view.bounds.size.height];
+    return YES;
 }
-
 
 - (IBAction)getDateSelection:(id)sender
 {

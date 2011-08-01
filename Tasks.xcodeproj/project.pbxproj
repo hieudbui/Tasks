@@ -51,6 +51,13 @@
 		737165A313D5D2CF00FD5EE0 /* accounts.json in Resources */ = {isa = PBXBuildFile; fileRef = 737165A213D5D2CF00FD5EE0 /* accounts.json */; };
 		737165AD13D5FBF300FD5EE0 /* UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 737165AC13D5FBF300FD5EE0 /* UUIDString.m */; };
 		7384CF9113DF64320011A58D /* UILabelStrikeThrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 7384CF9013DF64320011A58D /* UILabelStrikeThrough.m */; };
+		738C3F2113E74BA5006251CB /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F1913E74BA5006251CB /* GTMOAuthViewControllerTouch.m */; };
+		738C3F2213E74BA5006251CB /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F1B13E74BA5006251CB /* GTMOAuthAuthentication.m */; };
+		738C3F2313E74BA5006251CB /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F1D13E74BA5006251CB /* GTMOAuthSignIn.m */; };
+		738C3F2413E74BA5006251CB /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F1F13E74BA5006251CB /* GTMHTTPFetcher.m */; };
+		738C3F2513E74BA5006251CB /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738C3F2013E74BA5006251CB /* GTMOAuthViewTouch.xib */; };
+		738C3F2713E74C99006251CB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738C3F2613E74C98006251CB /* Security.framework */; };
+		738C3F2913E74CA2006251CB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738C3F2813E74CA2006251CB /* SystemConfiguration.framework */; };
 		73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */; };
 		73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */; };
 		73A9B28A13D717CD006F0641 /* TaskEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28813D717CC006F0641 /* TaskEditViewController.m */; };
@@ -164,6 +171,17 @@
 		737165AC13D5FBF300FD5EE0 /* UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDString.m; sourceTree = "<group>"; };
 		7384CF8F13DF64320011A58D /* UILabelStrikeThrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabelStrikeThrough.h; sourceTree = "<group>"; };
 		7384CF9013DF64320011A58D /* UILabelStrikeThrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelStrikeThrough.m; sourceTree = "<group>"; };
+		738C3F1813E74BA5006251CB /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
+		738C3F1913E74BA5006251CB /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
+		738C3F1A13E74BA5006251CB /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
+		738C3F1B13E74BA5006251CB /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
+		738C3F1C13E74BA5006251CB /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
+		738C3F1D13E74BA5006251CB /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
+		738C3F1E13E74BA5006251CB /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		738C3F1F13E74BA5006251CB /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		738C3F2013E74BA5006251CB /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
+		738C3F2613E74C98006251CB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		738C3F2813E74CA2006251CB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		73A0CB1E13DDDA0C0069B407 /* RemoveTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveTaskViewController.h; sourceTree = "<group>"; };
 		73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveTaskViewController.m; sourceTree = "<group>"; };
 		73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoveTaskViewController.xib; sourceTree = "<group>"; };
@@ -206,6 +224,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				738C3F2913E74CA2006251CB /* SystemConfiguration.framework in Frameworks */,
+				738C3F2713E74C99006251CB /* Security.framework in Frameworks */,
 				730C58A613AFB85E00D443E6 /* UIKit.framework in Frameworks */,
 				730C58A813AFB85E00D443E6 /* Foundation.framework in Frameworks */,
 				730C58AA13AFB85E00D443E6 /* CoreGraphics.framework in Frameworks */,
@@ -228,6 +248,8 @@
 		730C589613AFB85E00D443E6 = {
 			isa = PBXGroup;
 			children = (
+				738C3F2813E74CA2006251CB /* SystemConfiguration.framework */,
+				738C3F2613E74C98006251CB /* Security.framework */,
 				730C58AB13AFB85E00D443E6 /* Tasks */,
 				730C58CE13AFB85E00D443E6 /* TasksTests */,
 				730C58A413AFB85E00D443E6 /* Frameworks */,
@@ -257,6 +279,7 @@
 		730C58AB13AFB85E00D443E6 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				738C3F1613E74B7A006251CB /* OAuth */,
 				737165AA13D5FBE000FD5EE0 /* Util */,
 				7371657813D5C90800FD5EE0 /* JSON */,
 				73645F0713B1241000222CB1 /* Controller */,
@@ -434,6 +457,22 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		738C3F1613E74B7A006251CB /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				738C3F1813E74BA5006251CB /* GTMOAuthViewControllerTouch.h */,
+				738C3F1913E74BA5006251CB /* GTMOAuthViewControllerTouch.m */,
+				738C3F1A13E74BA5006251CB /* GTMOAuthAuthentication.h */,
+				738C3F1B13E74BA5006251CB /* GTMOAuthAuthentication.m */,
+				738C3F1C13E74BA5006251CB /* GTMOAuthSignIn.h */,
+				738C3F1D13E74BA5006251CB /* GTMOAuthSignIn.m */,
+				738C3F1E13E74BA5006251CB /* GTMHTTPFetcher.h */,
+				738C3F1F13E74BA5006251CB /* GTMHTTPFetcher.m */,
+				738C3F2013E74BA5006251CB /* GTMOAuthViewTouch.xib */,
+			);
+			name = OAuth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +558,7 @@
 				73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */,
 				73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */,
 				73D3B05413E089D500EB9915 /* SelectADateViewController.xib in Resources */,
+				738C3F2513E74BA5006251CB /* GTMOAuthViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +631,10 @@
 				73D3B04913E05FC000EB9915 /* SettingsViewController.m in Sources */,
 				73D3B04F13E0638100EB9915 /* Settings.m in Sources */,
 				73D3B05313E089D500EB9915 /* SelectADateViewController.m in Sources */,
+				738C3F2113E74BA5006251CB /* GTMOAuthViewControllerTouch.m in Sources */,
+				738C3F2213E74BA5006251CB /* GTMOAuthAuthentication.m in Sources */,
+				738C3F2313E74BA5006251CB /* GTMOAuthSignIn.m in Sources */,
+				738C3F2413E74BA5006251CB /* GTMHTTPFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
