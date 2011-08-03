@@ -59,6 +59,7 @@
 		738C3F2913E74CA2006251CB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738C3F2813E74CA2006251CB /* SystemConfiguration.framework */; };
 		738C3F2D13E84334006251CB /* GoogleOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F2B13E84333006251CB /* GoogleOAuthViewController.m */; };
 		738C3F2E13E84334006251CB /* GoogleOAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738C3F2C13E84334006251CB /* GoogleOAuthViewController.xib */; };
+		738C3F3013E9A0F5006251CB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738C3F2F13E9A0F5006251CB /* MainWindow.xib */; };
 		73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */; };
 		73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */; };
 		73A9B28A13D717CD006F0641 /* TaskEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28813D717CC006F0641 /* TaskEditViewController.m */; };
@@ -185,6 +186,7 @@
 		738C3F2A13E84333006251CB /* GoogleOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleOAuthViewController.h; sourceTree = "<group>"; };
 		738C3F2B13E84333006251CB /* GoogleOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleOAuthViewController.m; sourceTree = "<group>"; };
 		738C3F2C13E84334006251CB /* GoogleOAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleOAuthViewController.xib; sourceTree = "<group>"; };
+		738C3F2F13E9A0F5006251CB /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		73A0CB1E13DDDA0C0069B407 /* RemoveTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveTaskViewController.h; sourceTree = "<group>"; };
 		73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveTaskViewController.m; sourceTree = "<group>"; };
 		73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoveTaskViewController.xib; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				73645EFC13B11DF000222CB1 /* Storage */,
 				730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */,
 				730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */,
+				738C3F2F13E9A0F5006251CB /* MainWindow.xib */,
 				730C58AC13AFB85E00D443E6 /* Supporting Files */,
 			);
 			path = Tasks;
@@ -564,6 +567,7 @@
 				73D3B05413E089D500EB9915 /* SelectADateViewController.xib in Resources */,
 				738C3F2513E74BA5006251CB /* GTMOAuthViewTouch.xib in Resources */,
 				738C3F2E13E84334006251CB /* GoogleOAuthViewController.xib in Resources */,
+				738C3F3013E9A0F5006251CB /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
