@@ -13,7 +13,6 @@
 		730C58B013AFB85E00D443E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 730C58AE13AFB85E00D443E6 /* InfoPlist.strings */; };
 		730C58B313AFB85E00D443E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58B213AFB85E00D443E6 /* main.m */; };
 		730C58B613AFB85E00D443E6 /* TasksAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */; };
-		730C58B913AFB85E00D443E6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C58B713AFB85E00D443E6 /* MainWindow.xib */; };
 		730C58BC13AFB85E00D443E6 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58BB13AFB85E00D443E6 /* DetailViewController.m */; };
 		730C58BF13AFB85E00D443E6 /* TasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C58BD13AFB85E00D443E6 /* TasksViewController.xib */; };
 		730C58C213AFB85E00D443E6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C58C113AFB85E00D443E6 /* RootViewController.m */; };
@@ -58,6 +57,8 @@
 		738C3F2513E74BA5006251CB /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738C3F2013E74BA5006251CB /* GTMOAuthViewTouch.xib */; };
 		738C3F2713E74C99006251CB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738C3F2613E74C98006251CB /* Security.framework */; };
 		738C3F2913E74CA2006251CB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738C3F2813E74CA2006251CB /* SystemConfiguration.framework */; };
+		738C3F2D13E84334006251CB /* GoogleOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C3F2B13E84333006251CB /* GoogleOAuthViewController.m */; };
+		738C3F2E13E84334006251CB /* GoogleOAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738C3F2C13E84334006251CB /* GoogleOAuthViewController.xib */; };
 		73A0CB2113DDDA0D0069B407 /* RemoveTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */; };
 		73A0CB2213DDDA0D0069B407 /* RemoveTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */; };
 		73A9B28A13D717CD006F0641 /* TaskEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9B28813D717CC006F0641 /* TaskEditViewController.m */; };
@@ -101,7 +102,6 @@
 		730C58B213AFB85E00D443E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TasksAppDelegate.h; sourceTree = "<group>"; };
 		730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TasksAppDelegate.m; sourceTree = "<group>"; };
-		730C58B813AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		730C58BA13AFB85E00D443E6 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		730C58BB13AFB85E00D443E6 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		730C58BE13AFB85E00D443E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TasksViewController.xib; sourceTree = "<group>"; };
@@ -182,6 +182,9 @@
 		738C3F2013E74BA5006251CB /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
 		738C3F2613E74C98006251CB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		738C3F2813E74CA2006251CB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		738C3F2A13E84333006251CB /* GoogleOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleOAuthViewController.h; sourceTree = "<group>"; };
+		738C3F2B13E84333006251CB /* GoogleOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleOAuthViewController.m; sourceTree = "<group>"; };
+		738C3F2C13E84334006251CB /* GoogleOAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleOAuthViewController.xib; sourceTree = "<group>"; };
 		73A0CB1E13DDDA0C0069B407 /* RemoveTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveTaskViewController.h; sourceTree = "<group>"; };
 		73A0CB1F13DDDA0C0069B407 /* RemoveTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveTaskViewController.m; sourceTree = "<group>"; };
 		73A0CB2013DDDA0C0069B407 /* RemoveTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoveTaskViewController.xib; sourceTree = "<group>"; };
@@ -286,7 +289,6 @@
 				73645EFC13B11DF000222CB1 /* Storage */,
 				730C58B413AFB85E00D443E6 /* TasksAppDelegate.h */,
 				730C58B513AFB85E00D443E6 /* TasksAppDelegate.m */,
-				730C58B713AFB85E00D443E6 /* MainWindow.xib */,
 				730C58AC13AFB85E00D443E6 /* Supporting Files */,
 			);
 			path = Tasks;
@@ -412,6 +414,9 @@
 				73D3B05013E089D200EB9915 /* SelectADateViewController.h */,
 				73D3B05113E089D300EB9915 /* SelectADateViewController.m */,
 				73D3B05213E089D400EB9915 /* SelectADateViewController.xib */,
+				738C3F2A13E84333006251CB /* GoogleOAuthViewController.h */,
+				738C3F2B13E84333006251CB /* GoogleOAuthViewController.m */,
+				738C3F2C13E84334006251CB /* GoogleOAuthViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -541,7 +546,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				730C58B013AFB85E00D443E6 /* InfoPlist.strings in Resources */,
-				730C58B913AFB85E00D443E6 /* MainWindow.xib in Resources */,
 				730C58BF13AFB85E00D443E6 /* TasksViewController.xib in Resources */,
 				730C593C13B10EFC00D443E6 /* RootView.xib in Resources */,
 				73B7FDBF13B8FA5B0001E053 /* TaskListsViewController.xib in Resources */,
@@ -559,6 +563,7 @@
 				73D3B04A13E05FC000EB9915 /* SettingsViewController.xib in Resources */,
 				73D3B05413E089D500EB9915 /* SelectADateViewController.xib in Resources */,
 				738C3F2513E74BA5006251CB /* GTMOAuthViewTouch.xib in Resources */,
+				738C3F2E13E84334006251CB /* GoogleOAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +640,7 @@
 				738C3F2213E74BA5006251CB /* GTMOAuthAuthentication.m in Sources */,
 				738C3F2313E74BA5006251CB /* GTMOAuthSignIn.m in Sources */,
 				738C3F2413E74BA5006251CB /* GTMHTTPFetcher.m in Sources */,
+				738C3F2D13E84334006251CB /* GoogleOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,14 +669,6 @@
 				730C58AF13AFB85E00D443E6 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		730C58B713AFB85E00D443E6 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				730C58B813AFB85E00D443E6 /* en */,
-			);
-			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 		730C58BD13AFB85E00D443E6 /* TasksViewController.xib */ = {

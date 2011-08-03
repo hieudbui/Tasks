@@ -20,6 +20,30 @@
 @implementation DetailViewController
 
 @synthesize popoverController=_myPopoverController;
+@synthesize navigationController=_navigationController;
+
+- (void) pushViewController:(UIViewController *)viewController
+{
+    [_navigationController popToRootViewControllerAnimated:NO];
+    for (UIView *view in [self.view subviews]) {
+        [view removeFromSuperview];
+    }
+    [self.view addSubview:_navigationController.view];
+    
+    [_navigationController pushViewController:viewController animated:YES];
+    /*
+    if(_viewController !=viewController) {
+        [_viewController release];
+        _viewController=[[UINavigationController alloc] initWithRootViewController:viewController];
+        for (UIView *view in [self.view subviews]) {
+            [view removeFromSuperview];
+        }
+        [self.view addSubview:_viewController.view];
+        [viewController viewWillAppear:YES];
+
+    }
+     */
+}
 
 - (void) setViewController:(UIViewController *)viewController
 {
@@ -122,6 +146,7 @@
 {
     [_myPopoverController release];
     [_viewController release];
+    [_navigationController release];
     [super dealloc];
 }
 

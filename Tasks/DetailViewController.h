@@ -14,6 +14,10 @@
 <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     UIViewController *_viewController;
 }
+
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
 - (IBAction) setViewController:(UIViewController *)viewController;
+- (void) pushViewController:(UIViewController *)viewController;
 
 @end

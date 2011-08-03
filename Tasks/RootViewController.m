@@ -14,6 +14,10 @@
 #import "AccountStorage.h"
 #import "AccountEditViewController.h"
 #import "SettingsCompleteDelegate.h"
+#import "GTMOAuthViewControllerTouch.h"
+
+static NSString *const kKeychainItemName = @"AgileSoft Google Tasks";
+static NSString *const kShouldSaveInKeychainKey = @"shouldSaveInKeychain";
 
 @implementation RootViewController
 		
@@ -25,6 +29,36 @@
 @synthesize settingsViewController=_settingsViewController;
 @synthesize tableView=_tableView;
 @synthesize accountStorage=_accountStorage;
+
+
+
+- (void)awakeFromNib {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(incrementNetworkActivity:) name:kGTMOAuthFetchStarted object:nil];
+    [nc addObserver:self selector:@selector(decrementNetworkActivity:) name:kGTMOAuthFetchStopped object:nil];
+    [nc addObserver:self selector:@selector(signInNetworkLostOrFound:) name:kGTMOAuthNetworkLost  object:nil];
+    [nc addObserver:self selector:@selector(signInNetworkLostOrFound:) name:kGTMOAuthNetworkFound object:nil];
+    
+    // Get the saved authentication, if any, from the keychain.
+    //
+    // The view controller supports methods for saving and restoring
+    // authentication under arbitrary keychain item names; see the
+    // "keychainForName" methods in the interface.  The keychain item
+    // names are up to the application, and may reflect multiple accounts for
+    // one or more services.
+    //
+    // This sample app may have saved one Google authentication and one Twitter
+    // auth.  First, we'll try to get the saved Google authentication, if any.
+    GTMOAuthAuthentication *auth;
+    auth = [GTMOAuthViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName];
+    // save the authentication object, which holds the auth tokens
+    [self setAuthentication:auth];
+}
+
+- (void)setAuthentication:(GTMOAuthAuthentication *)auth {
+    [mAuth autorelease];
+    mAuth = [auth retain];
+}
 
 
 - (void)viewDidLoad
@@ -220,8 +254,33 @@
                               withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert) {
-        [self.detailViewController setViewController:self.accountEditViewController];  
-        self.accountEditViewController.account=[self.accountStorage newAccount];
+        
+        // For GTM applications, the scope is available as
+        //   NSString *scope = [[service class] authorizationScope]
+        NSString *scope = @"http://www.google.com/m8/feeds/";
+        
+        // ### Important ###
+        // GTMOAuthViewControllerTouch is not designed to be reused. Make a new
+        // one each time you are going to show it.
+        
+        // Display the autentication view.
+        GTMOAuthViewControllerTouch *viewController = [[[GTMOAuthViewControllerTouch alloc]
+                                                        initWithScope:scope
+                                                        language:nil
+                                                        appServiceName:kKeychainItemName
+                                                        delegate:self
+                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)] autorelease];
+        
+        // You can set the title of the navigationItem of the controller here, if you want.
+        
+        // Optional: display some html briefly before the sign-in page loads
+        NSString *html = @"<html><body bgcolor=silver><div align=center>Loading sign-in page...</div></body></html>";
+        [viewController setInitialHTMLString:html];
+            
+        [self.detailViewController pushViewController:viewController];
+        
+        //[self.detailViewController setViewController:self.accountEditViewController];  
+        //self.accountEditViewController.account=[self.accountStorage newAccount];
     }
 }
 

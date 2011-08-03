@@ -15,8 +15,11 @@
 @class AccountEditViewController;
 @class SettingsViewController;
 @protocol AccountStorage;
+@class GTMOAuthAuthentication;
 
 @interface RootViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, EditAccountComplete,SettingsCompleteDelegate> {
+    
+    GTMOAuthAuthentication *mAuth;
 }
 
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
@@ -28,6 +31,8 @@
 @property (nonatomic, retain) NSArray *accounts;
 @property(nonatomic,retain) IBOutlet NSObject<AccountStorage> *accountStorage;
 
+
+- (void)setAuthentication:(GTMOAuthAuthentication *)auth;
 - (IBAction)sync;
 - (IBAction)settings;
 @end
